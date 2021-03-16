@@ -8,6 +8,7 @@ export default function NotFoundScreen({
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
       <View style={{}}>
       <View style={{
         flexDirection:'row', }}>
@@ -50,6 +51,70 @@ export default function NotFoundScreen({
           />
       </View>
       <View style={{ alignItems:'center'}}>
+=======
+      <View style={{
+        // backgroundColor: 'red', 
+        width:'90%'
+        }}>
+        <View style={{}}>
+          <View style={{
+            flexDirection:'row', 
+            height: 45,
+            }}>
+            <Text style={styles.tx}>Начни </Text>
+            <Text style={{
+              textAlign: 'left',
+              color:'#ff8c39',
+              fontSize: 38,
+              fontWeight:'bold',
+              }}>играть </Text>
+              <Text style={styles.tx}>с </Text>
+          </View>
+          <View style={{
+            height: 45,
+            }}>
+           <Text style={styles.tx}>детьми в одно</Text>
+          </View>
+          <View style={{
+            height: 45,
+            }}>
+          <Text style={styles.tx}>нажатие</Text>
+          </View>
+        </View>
+            {/* <Image style={{}}
+            source={require('../img/gameAndChildren.png')}
+            /> */}
+        <Text style={{fontSize: 17, marginTop: 30,}}>Вы сможете быстро подобрать игру по{"\n"}времени и количесву детей на{"\n"}мероприятие</Text>
+        <View style={{width: '100%',}}>
+          <View style={{alignItems: 'center',}}>
+          </View>
+          <View style={{justifyContent:'center',  }}>
+            <TouchableOpacity style={styles.roundedButton} onPress={() => navigation.replace('Root')}>
+              <Text style={{fontSize:17, color: '#fff'}}>Продолжить</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{alignItems: 'center',}}>
+            <View style={styles.container}>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.emptyCartView}>
+                </View>
+              </ScrollView>
+            </View>
+          </View>
+        </View>
+        <View style={{
+          justifyContent: 'center',
+          width: '100%',
+          backgroundColor: '#green',
+          alignItems: 'center',
+          }}>
+            <Image style={{ height: 250, width: '100%',}}
+            source={require('../img/G.png')}
+            />
+        </View>
+        <View style={{ alignItems:'center'}}>
+        </View>
+>>>>>>> aa0e082 (no message)
       </View>
     </View>
   );
@@ -58,9 +123,14 @@ export default function NotFoundScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+<<<<<<< HEAD
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+=======
+    justifyContent: 'center',
+    alignItems: 'center',
+>>>>>>> aa0e082 (no message)
     padding: 20,
   },
   emptyCartView: {
@@ -77,10 +147,17 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     marginBottom: 3,
+<<<<<<< HEAD
     marginTop: 50,
     marginRight: 2,
     justifyContent: 'center',
     marginLeft: 5,
+=======
+    marginTop: 80,
+    marginRight: 2,
+    marginLeft: 5,
+    justifyContent: 'center',
+>>>>>>> aa0e082 (no message)
     paddingVertical: 10,
     paddingHorizontal: 102,
     backgroundColor: '#2B67F6',

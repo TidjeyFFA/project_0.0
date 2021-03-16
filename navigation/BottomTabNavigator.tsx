@@ -60,6 +60,10 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
+<<<<<<< HEAD
+=======
+        options={{headerShown: false }}
+>>>>>>> aa0e082 (no message)
       />
     </TabOneStack.Navigator>
   );

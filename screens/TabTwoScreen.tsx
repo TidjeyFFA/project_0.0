@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { StyleSheet, Pressable, Alert, Modal, TouchableOpacity } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -131,6 +132,26 @@ export default function TabTwoScreen() {
       >
         <Text style={styles.textStyle}>Show Modal</Text>
       </Pressable>
+=======
+import { StyleSheet, Image, Pressable, Alert, Modal, TouchableOpacity } from 'react-native';
+
+import EditScreenInfo from '../components/EditScreenInfo';
+import { Text, View, } from '../components/Themed';
+
+const Knop = ({ text }: {text: string }, { bull }: {bull: string }, ) => (
+  <TouchableOpacity /*onPress={bull}*/ style={styles.knok}>
+    <Text style={styles.textTimmy}>{text}</Text>
+  </TouchableOpacity>
+);
+
+export default function TabTwoScreen() {
+  return (
+    <View style={styles.container}>
+      <Image style={{}}
+        source={require('../img/menuPusto.png')}
+      />
+      <Text style={{fontSize: 20,}}>Добавь первую любимую игру</Text>
+>>>>>>> aa0e082 (no message)
     </View>
   );
 }
@@ -151,14 +172,22 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   centeredView: {
+<<<<<<< HEAD
     // backgroundColor: "#EE00EE",
+=======
+    backgroundColor: "#EE00EE",
+>>>>>>> aa0e082 (no message)
     flex: 1,
     justifyContent: "center",
     opacity: 400,
     alignItems: "center",
   },
   modalView: {
+<<<<<<< HEAD
     // backgroundColor: "#EC3B00",
+=======
+    backgroundColor: "#EC3B00",
+>>>>>>> aa0e082 (no message)
     borderRadius: 20,
     marginTop: 250,
     width: '100%',
@@ -204,8 +233,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   knok:{
+<<<<<<< HEAD
     // backgroundColor: '#DCDCDC', 
     backgroundColor: '#F9F6F4',
+=======
+    backgroundColor: '#DCDCDC', 
+    // backgroundColor: '#F9F6F4',
+>>>>>>> aa0e082 (no message)
     marginTop: 16,
     marginBottom: 5,
     marginRight: 8,

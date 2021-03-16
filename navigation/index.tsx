@@ -2,6 +2,10 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
+<<<<<<< HEAD
+=======
+import FilterScreen from '../screens/FilterScreen';
+>>>>>>> aa0e082 (no message)
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
@@ -29,6 +33,10 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} />
+<<<<<<< HEAD
+=======
+      <Stack.Screen name="FilterSk" component={FilterScreen} options={{ title: 'Oops!' }} />
+>>>>>>> aa0e082 (no message)
     </Stack.Navigator>
   );
 }
