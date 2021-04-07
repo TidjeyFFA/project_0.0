@@ -1,76 +1,42 @@
-<<<<<<< HEAD
-import * as React from 'react';
-import { StyleSheet, Image, TouchableOpacity } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-
-export default function TabOneScreen() {
-  return (
-    <View style={styles.container}>
-      <View style={{
-          width: '80%',
-          // height: 100,
-          backgroundColor: '#0D1B3D',
-          borderRadius: 24,
-          alignItems: "center",
-          }}>
-            
-            <Image style={{width: 287, height: 197, margin: 20,}}
-              source={require('../img/F.png')}
-            />
-            <Text style={{color: '#fff', fontSize: 28, textAlign: "center", marginBottom: 20,}}>Найди свою первую {'\n'} игру сегодня</Text>
-            
-              <TouchableOpacity style={{
-                backgroundColor: '#2B67F6',
-                width: 287,
-                height: 56,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 86,
-                marginBottom: 20,
-                }}>
-               <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
-              </TouchableOpacity>
-       </View>
-=======
 import { StackScreenProps } from '@react-navigation/stack';
 import React, {useState} from 'react';
 import { StyleSheet, Image, Modal, TouchableOpacity, SafeAreaView} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { Text, View } from '../components/Themed';
 import { RootStackParamList } from '../types';
+import { DATA } from '../hooks/DATA'
 
-const DATA = [
-  {
-    id: '586etga0f-3da1-471f-bd96-145571e29d72',
-    name: 'игра',
-    podrobn: 'картофель не любит есть своих сородичей',
-    title: 'Third Item',
-    number: 20,
-    human: 20,
-    min: 20,
-  },
-  {
-    id: '586fgjfgn0f-3da1-471f-bd96-145jde29d72',
-    name: 'драконор',
-    podrobn: 'драконы очень любят картошку, но картофельподает на них в суд',
-    title: 'Third Item',
-    number: 10,
-    human: 20,
-    min: 20,
-  },
-  {
-    id: '58sgbgbsgb0f-3da1-471f-bd96-145wbregbr2',
-    name: 'bulbik',
-    podrobn: 'buldik rghder ghbdr gbe rgb ',
-    title: 'Tafrem',
-    number: 15,
-    human: 20,
-    min: 20,
-  },
-];
+// const DATA = [
+//   {
+//     id: '586etga0f-3da1-471f-bd96-145571e29d72',
+//     name: 'игра',
+//     podrobn: 'картофель не любит есть своих сородичей',
+//     title: 'Third Item',
+//     number: 20,
+//     human: 20,
+//     min: 20,
+//   },
+//   {
+//     id: '586fgjfgn0f-3da1-471f-bd96-145jde29d72',
+//     name: 'драконор',
+//     podrobn: 'драконы очень любят картошку, но картофельподает на них в суд',
+//     title: 'Third Item',
+//     number: 10,
+//     human: 20,
+//     min: 20,
+//   },
+//   {
+//     id: '58sgbgbsgb0f-3da1-471f-bd96-145wbregbr2',
+//     name: 'bulbik',
+//     podrobn: 'buldik rghder ghbdr gbe rgb ',
+//     title: 'Tafrem',
+//     number: 15,
+//     human: 20,
+//     min: 20,
+//   },
+// ];
 
 
 
@@ -80,20 +46,36 @@ function Item(
     const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
+      <View style={{alignItems:'center', width:'90%'}}>
     <TouchableOpacity
       onPress={() => setModalVisible(true)}
       style={[
         styles.item,
       ]}
     >
-      <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-        <Text style={{fontSize: 25,}}>{name}</Text>
+      <View style={{width:'80%', backgroundColor: '#FF000000'}}>
+        
+      <View style={{ flexDirection:'row',  backgroundColor: '#EE16D300' }}>
+        <Text style={{fontSize: 20,}}>{name}</Text>
       </View>
-      <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+      <View style={{ flexDirection:'row', backgroundColor:'#FF000000' }}>
+                  <TouchableOpacity style={styles.buttonFil2}>
+                     <MaterialCommunityIcons name="human-male" size={14} color="black" />
+                     <Text style={{fontSize:15,}}> до {human} чел </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.buttonFil2}>
+                     <Text> до {min} мин </Text>
+                  </TouchableOpacity>
+                </View>
+      {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
         <Text style={{fontSize: 20, }}>{podrobn}</Text>
-      </View>
-      <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+      </View> */}
+      {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
        <Text style={styles.title}>{title}</Text>
+      </View> */}
+      </View>
+      <View style={{backgroundColor: '#FF000000'}}>
+        <MaterialCommunityIcons name="human-male" size={14} color="black" />
       </View>
     </TouchableOpacity>
       <Modal
@@ -126,11 +108,16 @@ function Item(
               ><Text>   </Text></TouchableOpacity>
             </TouchableOpacity>
               <View style={{ width:'90%'}}>
+                
+              <TouchableOpacity style={styles.button}>
+                     <Text>{min}</Text>
+                  </TouchableOpacity>
                 <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
                   <Text style={{fontSize: 32, fontWeight: 'bold' }}>{name}</Text>
                 </View>
                 <View style={{ flexDirection:'row',  }}>
                   <TouchableOpacity style={styles.button}>
+                     <MaterialCommunityIcons name="human-male" size={14} color="black" />
                      <Text> до {human} чел </Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.button}>
@@ -140,41 +127,65 @@ function Item(
                 <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
                   <Text style={{fontSize: 20, }}>{podrobn}</Text>
                 </View>
-                <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+                {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
                 <Text style={styles.title}>{title}</Text>
-                </View>
+                </View> */}
               </View>
             <View style={{width:'90%'}}>
                 {/* <BlockOk path="lololol" /> */}
             </View>
           </View>
       </Modal>
+      </View>
     </View>
     
   );
 }
+
+function pervuyu() {
+  return(
+    <Text style={{color: '#ff8c39', fontSize: 28,}}>первую</Text>
+  )
+}
+
 export default function TabOneScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
   return (
     <View style={styles.container}>
+      <FlatList
+        data={DATA}
+        // style={{alignItems:'center'}}
+        ListHeaderComponent={
+          <View style={{width:'100%',
+            // backgroundColor: '#FF0000', 
+            alignItems: 'center', 
+            }}>
+          <View style={{width:'90%',  alignItems: 'center', }}>
         <View style={{paddingTop: 100}}></View>
         <View style={{
             // height: 100,
+            width: '90%',
+            minWidth:350,
             backgroundColor: '#0D1B3D',
             borderRadius: 24,
             alignItems: "center",
             padding: 20,
             }}>
               
-              <Image style={{width: 287, height: 197, margin: 20, marginRight: 20, marginLeft: 20,}}
+              <Image style={{width: 287, height: 197,  marginRight: 20, marginLeft: 20,}}
                 source={require('../img/F.png')}
               />
-              <Text style={{color: '#fff', fontSize: 28, textAlign: "center", marginBottom: 20,}}>Найди свою первую {'\n'} игру сегодня</Text>
+              <View style={{flexDirection:'row',marginBottom: 0, backgroundColor: '#ff000000'}}>
+                <Text style={{color: '#fff', fontSize: 28, }}>Найди свою </Text>
+                <Text style={{color: '#ff8c39', fontSize: 28, }}>перевую</Text>
+              </View>   
+              <Text style={{color: '#fff', fontSize: 28, textAlign: "center", marginBottom: 20,}}>игру сегодня</Text>
               
                 <TouchableOpacity onPress={() => navigation.replace('FilterSk')} style={{
                   backgroundColor: '#2B67F6',
-                  width: 287,
+                  // width: 287,
+                  width: '96%',
                   height: 56,
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -191,8 +202,8 @@ export default function TabOneScreen({
         }}>
           <Text style={{fontSize: 32, fontWeight: 'bold'}}>Недавние</Text>
         </View>
-      <FlatList
-        data={DATA}
+        </View>
+        </View>}
         renderItem={({ item }) => (
           <Item
             number={item.number}
@@ -206,7 +217,7 @@ export default function TabOneScreen({
         )}
         keyExtractor={item => item.id}
       />
->>>>>>> aa0e082 (no message)
+      
     </View>
   );
 }
@@ -214,19 +225,39 @@ export default function TabOneScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-=======
     // backgroundColor:'red',
     height: '100%',
-    alignItems: 'center',
+  },
+  buttonFil2:{
+    // backgroundColor: '#DCDCDC', 
+    backgroundColor: '#31EE1600',
+    flexDirection:'row',
+    marginTop: 16,
+    marginBottom: 5,
+    marginRight: 8,
+    borderRadius: 47,
     justifyContent: 'center',
+    alignItems: 'center',
+    // paddingVertical: 4,
+    // paddingHorizontal:  10,
+  },
+  buttonFil:{
+    // backgroundColor: '#DCDCDC', 
+    backgroundColor: '#F9F6F4',
+    flexDirection:'row',
+    marginTop: 16,
+    marginBottom: 5,
+    marginRight: 8,
+    borderRadius: 47,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 4,
+    paddingHorizontal:  10,
   },
   button:{
     // backgroundColor: '#DCDCDC', 
     backgroundColor: '#F9F6F4',
+    flexDirection:'row',
     marginTop: 16,
     marginBottom: 5,
     marginRight: 8,
@@ -236,7 +267,6 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal:  10,
   },
->>>>>>> aa0e082 (no message)
   title: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -246,13 +276,23 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-<<<<<<< HEAD
-=======
   item: {
     backgroundColor: '#DCDCDC',
     // backgroundColor: 'green',
+    width: '90%',
+    flexDirection:'row',
+    height: 94,
+    marginTop:20,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  item2: {
+    backgroundColor: '#DCDCDC',
+    // backgroundColor: 'green',
     width: 360,
-    height: 100,
+    flexDirection:'row',
+    height: 94,
     marginTop:20,
     borderRadius: 20,
     alignItems: 'center',
@@ -261,6 +301,7 @@ const styles = StyleSheet.create({
   centeredView: {
     // backgroundColor: "#EE00EE",
     flex: 1,
+    width:'100%',
     justifyContent: "center",
     opacity: 400,
     alignItems: "center",
@@ -281,5 +322,4 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 9
   },
->>>>>>> aa0e082 (no message)
 });

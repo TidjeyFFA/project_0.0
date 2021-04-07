@@ -1,15 +1,14 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React, {useState, useEffect} from 'react';
-import { StyleSheet, Modal, FlatList, Text,  BackHandler,  TouchableOpacity, View, Image, ScrollView, Alert, StatusBar,} from 'react-native';
+import React, { useEffect, useState, } from 'react';
+import { StyleSheet, Modal, FlatList, Text, BackHandler,  TouchableOpacity, View, Image, ScrollView, Alert, StatusBar,} from 'react-native';
 
 import { DATA } from '../hooks/DATA';
-import FilterBlokOk from '../components/FilterBlokOk'
 import { RootStackParamList } from '../types';
 import BlockOk from '../hooks/BlockOk'
 
 
 function Item(
-  { id, title, name, podrobn, number, /*numberF, humanF*/ }:
+  { id, title, name, podrobn, number, }:
   {id: string, title: string, name: string, podrobn: string, number: any, /*numberF: any, humanF: any*/ }) {
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -89,43 +88,13 @@ function Item(
 
 // const result = DATA.filter(DATA => DATA.number > 11);
 
-export function FFF() {
-  const [borro, setBorro] = useState(0);
-}
 
-  const fdf = '0';
 
-export default function FilterScreen(
-  {
-  navigation,
-}: StackScreenProps<RootStackParamList, 'FilterSk'>) {
-  
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert("Hold on!", "Are you sure you want to go back?", [
-        {
-          text: "Cancel",
-          onPress: () => null,
-          style: "cancel"
-        },
-        { text: "YES", onPress: () => BackHandler.exitApp() }
-      ]);
-      return true;
-    };
-
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
-    );
-
-    return () => backHandler.remove();
-  }, []);
+export default function FilterBlokOk( {numberF, humanF}:{numberF: any, humanF: any }) {
+    const result = DATA.filter(DATA => DATA.number > numberF);
   return (
-      <View style={{backgroundColor: '#fff', flex: 1, marginTop: 50, }}>
-          <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{backgroundColor: '#000'}}>
-              <Text style={{color:'#fff'}}>NotFound</Text>
-          </TouchableOpacity>
-          
+      <View style={{backgroundColor: '#000', flex: 1, marginTop: 50, }}>
+        
           <BlockOk/>
           <FlatList
         data={DATA}
@@ -140,11 +109,9 @@ export default function FilterScreen(
         )}
         keyExtractor={item => item.id}
       />
-      {/* <FilterBlokOk numberF = {fdf} humanF='10'/> */}
       </View>
   );
 }
-
 
 
 const styles = StyleSheet.create({
@@ -174,7 +141,6 @@ const styles = StyleSheet.create({
 
   centeredView: {
     // backgroundColor: "#EE00EE",
-    backgroundColor: "#fff",
     flex: 1,
     justifyContent: "center",
     opacity: 400,

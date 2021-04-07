@@ -6,6 +6,15 @@ import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
+const DATA = [
+  {
+    id: '586etga0f-3da1-471f-bd96-145571e29d72',
+    naame: 'игра',
+    podrobn: 'картофель не любит есть своих сородичей',
+    title: 'Third Item',
+  },
+];
+
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
     <View>

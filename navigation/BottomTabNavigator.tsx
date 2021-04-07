@@ -1,7 +1,11 @@
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import { Image} from 'react-native';
+
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -23,21 +27,21 @@ export default function BottomTabNavigator() {
         name="игры"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="list-bullet" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="любимые"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon2 name="favorite" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="игротехника"
         component={TabTryNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon3 name="dice" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -46,8 +50,14 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon(props: { name: React.ComponentProps<typeof Foundation>['name']; color: string }) {
+  return <Foundation size={24} style={{ marginBottom: -3 }} {...props} />;
+}
+function TabBarIcon2(props: { name: React.ComponentProps<typeof MaterialIcons>['name']; color: string }) {
+  return <MaterialIcons size={24} style={{ marginBottom: -3 }} {...props} />;
+}
+function TabBarIcon3(props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
+  return <FontAwesome5 size={24} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -60,10 +70,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-<<<<<<< HEAD
-=======
         options={{headerShown: false }}
->>>>>>> aa0e082 (no message)
       />
     </TabOneStack.Navigator>
   );
@@ -77,7 +84,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerShown: false }}
       />
     </TabTwoStack.Navigator>
   );
@@ -91,7 +98,8 @@ function TabTryNavigator() {
       <TabTryStack.Screen
         name="TabTryScreen"
         component={TabTryScreen}
-        options={{ headerTitle: 'Tab Try Title' }}
+        options={{ headerShown: false }}
+        // options={{ headerTitle: 'Tab Try Title' }}
       />
     </TabTryStack.Navigator>
   );
