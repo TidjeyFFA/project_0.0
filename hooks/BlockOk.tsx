@@ -6,7 +6,7 @@ import { StyleSheet, Pressable, TouchableOpacity, Modal, Text, View} from 'react
 import { ScrollView } from 'react-native-gesture-handler';
 import FilterSk from '../screens/FilterScreen'
 import FFF from '../screens/FilterScreen'
-import {BattFil} from '../hooks/DATA'
+// import Perem from '../hooks/DATA'
 // import FFF from '../hooks/DATA'
 
 //       https://snack.expo.io/@tidjey/a7248e

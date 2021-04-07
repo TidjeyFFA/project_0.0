@@ -3,7 +3,12 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 
 import { StyleSheet, TouchableOpacity, Modal, Text, View} from 'react-native';
-
+export function Perem()  {
+  
+let fillHuman = 0; 
+let fillTime = 0;
+let fillKategor = '';
+}
 export const DATA = [
   {
     id: '586etga0f-3da1-471f-bd96-145571e29d72',

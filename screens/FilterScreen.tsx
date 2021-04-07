@@ -7,7 +7,6 @@ import FilterBlokOk from '../components/FilterBlokOk'
 import { RootStackParamList } from '../types';
 import BlockOk from '../hooks/BlockOk'
 
-
 function Item(
   { id, title, name, podrobn, number, /*numberF, humanF*/ }:
   {id: string, title: string, name: string, podrobn: string, number: any, /*numberF: any, humanF: any*/ }) {
@@ -125,7 +124,6 @@ export default function FilterScreen(
           <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{backgroundColor: '#000'}}>
               <Text style={{color:'#fff'}}>NotFound</Text>
           </TouchableOpacity>
-          
           <BlockOk/>
           <FlatList
         data={DATA}
