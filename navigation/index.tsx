@@ -9,6 +9,13 @@ import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
+import reducers from '../hooks/reducers'
+import ReduxThunk from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+
+const store = createStore(reducers)
+
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -27,10 +34,12 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
-      <Stack.Screen name="FilterSk" component={FilterScreen} options={{ title: 'Oops!' }} />
-    </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+          <Stack.Screen name="Root" component={BottomTabNavigator} />
+          <Stack.Screen name="FilterSk" component={FilterScreen} options={{ title: 'Oops!' }} />
+        </Stack.Navigator>
+      </Provider>
   );
 }

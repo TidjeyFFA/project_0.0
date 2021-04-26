@@ -6,8 +6,8 @@ import { StyleSheet, TouchableOpacity, Modal, Text, View} from 'react-native';
 export function Perem()  {
   
 let fillHuman = 0; 
-let fillTime = 0;
 let fillKategor = '';
+let fillTime = 0;
 }
 export const DATA = [
   {
@@ -35,6 +35,24 @@ export const DATA = [
     title: 'Tafrem',
     number: 15,
     human: 2,
+    min: 20,
+  },
+  {
+    id: '58srsthyfjh0f-3da1-471f-bd96-145wbregbr2',
+    name: '2462452ik',
+    podrobn: '325647376y5e7e456ue45u ',
+    title: 'Tafrem',
+    number: 15,
+    human: 200,
+    min: 20,
+  },
+  {
+    id: '58sjdyjusrjy0f-3da1-471f-bd96-14jbregbr2',
+    name: 'nhrfdshshnrshe',
+    podrobn: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
+    title: 'Tafrem',
+    number: 15,
+    human: 520,
     min: 20,
   },
 ];

@@ -56,8 +56,9 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Foundation>['name
 function TabBarIcon2(props: { name: React.ComponentProps<typeof MaterialIcons>['name']; color: string }) {
   return <MaterialIcons size={24} style={{ marginBottom: -3 }} {...props} />;
 }
-function TabBarIcon3(props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
-  return <FontAwesome5 size={24} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon3(
+  props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
+  return <FontAwesome5 size={24} style={{ marginBottom: 5 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:

@@ -21,3 +21,5 @@ export type TabTwoParamList = {
 export type TabTryParamList = {
   TabTryScreen: undefined;
 };
+
+export const SEARCH_CHANGED = 'SEARCH_CHANGED'

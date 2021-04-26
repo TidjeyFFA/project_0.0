@@ -46,7 +46,7 @@ function Item(
     const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
-      <View style={{alignItems:'center', width:'90%'}}>
+      <View style={{alignItems:'center', width:'96%'}}>
     <TouchableOpacity
       onPress={() => setModalVisible(true)}
       style={[
@@ -155,25 +155,25 @@ export default function TabOneScreen({
     <View style={styles.container}>
       <FlatList
         data={DATA}
-        // style={{alignItems:'center'}}
+        // style={{alignItems:'center'}}     , backgroundColor: '#FF000030'
         ListHeaderComponent={
           <View style={{width:'100%',
-            // backgroundColor: '#FF0000', 
+            // backgroundColor: '#FF000020', 
             alignItems: 'center', 
             }}>
-          <View style={{width:'90%',  alignItems: 'center', }}>
+          <View style={{ width:'100%',  alignItems: 'center', }}>
         <View style={{paddingTop: 100}}></View>
         <View style={{
             // height: 100,
             width: '90%',
-            minWidth:350,
+            // minWidth:350,
             backgroundColor: '#0D1B3D',
             borderRadius: 24,
             alignItems: "center",
-            padding: 20,
+            padding: 10,
             }}>
               
-              <Image style={{width: 287, height: 197,  marginRight: 20, marginLeft: 20,}}
+              <Image style={{width: 287, height: 197,  marginRight: 10, marginLeft: 10,}}
                 source={require('../img/F.png')}
               />
               <View style={{flexDirection:'row',marginBottom: 0, backgroundColor: '#ff000000'}}>
@@ -185,7 +185,7 @@ export default function TabOneScreen({
                 <TouchableOpacity onPress={() => navigation.replace('FilterSk')} style={{
                   backgroundColor: '#2B67F6',
                   // width: 287,
-                  width: '96%',
+                  width: '90%',
                   height: 56,
                   alignItems: 'center',
                   justifyContent: 'center',

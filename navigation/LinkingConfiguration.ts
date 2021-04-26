@@ -16,9 +16,15 @@ export default {
               TabTwoScreen: 'two',
             },
           },
+          TabTry: {
+            screens: {
+              TabTryScreen: 'try',
+            },
+          },
         },
       },
       NotFound: '*',
+      FilterSk: '*',
     },
   },
 };
