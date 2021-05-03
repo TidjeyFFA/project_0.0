@@ -18,11 +18,10 @@ const store = createStore(reducers)
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation() {
   return (
     <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      linking={LinkingConfiguration}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -38,7 +37,7 @@ function RootNavigator() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
           <Stack.Screen name="Root" component={BottomTabNavigator} />
-          <Stack.Screen name="FilterSk" component={FilterScreen} options={{ title: 'Oops!' }} />
+          <Stack.Screen name="FilterSk" component={FilterScreen} />
         </Stack.Navigator>
       </Provider>
   );

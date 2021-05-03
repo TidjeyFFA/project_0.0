@@ -8,22 +8,16 @@ import { RootStackParamList } from '../types';
 import BlockOk from '../hooks/BlockOk'
 import { createStore, } from 'redux'
 import { connect, } from 'react-redux'
-// import {  mapStateToProps } from 'react-redux'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-// import  store, { counterSlice }  from '../store/index'
 import { searchChanged } from '../hooks/actions'
-
-import {incremented,  } from '../store/index'
-import  {Vivod, fillHumanPer, fillTimePer, pistos }  from '../store/index'
-import   { store }  from '../store/index'
-// import getStorage from 'redux-persist/es/storage/getStorage';
 import { getStateFromPath } from '@react-navigation/core';
 import { RootState } from '../hooks/reducers';
-// import getStorage from 'redux-persist/es/storage/getStorage';
-// counterSlice.actions
+import { ButtHuman, ButtTime, ButtKategor } from '../store/index';
+
+
+
 function Item(
-  { id, title, name, podrobn, number, human, min, }:
-  {id: string, title: string, name: string, podrobn: string, number: any, human: any, min: any,  }) {
+  { id, title, name, podrobn, number, human, min, kategore, }: any) {
     const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
@@ -48,12 +42,6 @@ function Item(
                      <Text> до {min} мин </Text>
                   </TouchableOpacity>
                 </View>
-      {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-        <Text style={{fontSize: 20, }}>{podrobn}</Text>
-      </View> */}
-      {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-       <Text style={styles.title}>{title}</Text>
-      </View> */}
       </View>
       <View style={{backgroundColor: '#FF000000'}}>
         <MaterialCommunityIcons name="human-male" size={14} color="black" />
@@ -102,18 +90,17 @@ function Item(
                      <Text> до {human} чел </Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.button}>
+                     <Text> {kategore}  </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.button}>
                      <Text> до {min} мин </Text>
                   </TouchableOpacity>
                 </View>
                 <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
                   <Text style={{fontSize: 20, }}>{podrobn}</Text>
                 </View>
-                {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                <Text style={styles.title}>{title}</Text>
-                </View> */}
               </View>
             <View style={{width:'90%'}}>
-                {/* <BlockOk path="lololol" /> */}
             </View>
           </View>
       </Modal>
@@ -123,7 +110,6 @@ function Item(
   );
 }
 
-// const result = DATA.filter(DATA => DATA.number > 11);
 
 export function FFF(props: number) {
   const [borro, setBorro] = useState(0);
@@ -131,97 +117,66 @@ export function FFF(props: number) {
 }
 
   const fdf = '0';
-//  { navigation,  }: StackScreenProps<RootStackParamList, 'FilterSk'>,
 function FilterScreen( 
-  { navigation, movie, movieT }: StackScreenProps<RootStackParamList, 'FilterSk'>,
+  { navigation, searchChanged, movie, movieT, movogore, brah  }: StackScreenProps<RootStackParamList, 'FilterSk'>,
   
   ) {
     const props = {}
     // const { movie } = props
     // const { movie } = props;     
   console.log('thise props', props);
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert("Погодитека!!!", "Вы хотите выйти??", [
-        {
-          text: "Отмена",
-          onPress: () => null,
-          style: "cancel"
-        },
-        { text: "ДА", onPress: () => BackHandler.exitApp() }
-      ]);
-      return true;
-    };
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
-    );
+  // useEffect(() => {
 
-    return () => backHandler.remove();
+  //   const backAction = () => navigation.replace('NotFound');
+  //   const backHandler = BackHandler.addEventListener(
+  //     "hardwareBackPress",
+  //     backAction
+  //   );
 
-    // const mapStateToProps = ( {state}:{state: number} ) => ({ fillHumanPer: state._fillHuman })
+  //   return () => backHandler.remove();
 
-  }, []);
+  const ButtKategor13 = ({kateteButt, movie, movieT, movogore, brah }: any ) => {
+    return(
+      <TouchableOpacity
+       style={(movogore == kateteButt) ? styles.knok3 : styles.knok} 
+      onPress={() => {
+        if(kateteButt==movogore) {
+          searchChanged(movie, movieT, '', brah)
+        } else {
+        searchChanged(movie, movieT, kateteButt, brah)}
+                }}>
+          <Text style={movogore == kateteButt ? styles.textTimmy2 : styles.textTimmy}>{kateteButt}</Text>
+      </TouchableOpacity>
+    )
+  }
+
+  // }, 
+  // []);
     
-    // export connect(mapStateToProps)(_fillHuman);
     const [fillHumanPerState, setfillHumanPerState] = useState(0);
     const [fillTimePerState, setfillTimePerState] = useState(0);
     const [nolik, setNolik] = useState(0);
 
     const [odelete, setOdelete] = useState(0);
-    // const arrarr= ()=>{if(pistos>0){setfillHumanPerState(fillHumanPer)}};
-    // componentDidUpdate(fillHumanPer){}
   return (
       <View style={{backgroundColor: '#fff', flex: 1, marginTop: 50, }}>
           <FlatList
-// {DATA}       mapStateToProps     mapStateToProps     fillHumanPerState
-        data= {DATA.filter(DATA => DATA.human > movie && DATA.min > movieT)  }     
+        data= {DATA.filter(DATA => DATA.human > movie && DATA.min > movieT && DATA.kategore == movogore)  }     
         ListHeaderComponent={
           <>
-          
-          <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{backgroundColor: '#000'}}>
+          <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{  height:40, width: 80, backgroundColor: '#000'}}>
               <Text style={{color:'#fff'}}>NotFound</Text>
           </TouchableOpacity>
-          
-    <TouchableOpacity onPress={() => incremented()} style={{backgroundColor: '#000', height: 70}}>
-    <Text>  </Text> 
-    </TouchableOpacity>
-    {/* store.dispatch(incremented())                 props*/}
-            <Vivod/>
-          <BlockOk/>
-          <Text>{fillTimePer}</Text>
-          {/* <Text>{props.state}</Text> */}
-          <TouchableOpacity onPress={
-            () => {
-              // console.log(store.getState())
-              // console.log('props: ', props)
-              console.log('movie: ', movie)
-              // console.log('movie: ', searh.movie)
-              // console.log(store.getState())
-
-
-              setfillHumanPerState(fillHumanPer)
-              setfillTimePerState(fillTimePer)
-          }} style={{backgroundColor: '#000', height: 70}}>
-            <Text style={{color:'#fff'}}>{fillHumanPerState}  fillHumanPerState</Text>
-            <Text style={{color:'#fff'}}>{fillTimePerState}  fillTimePerState</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={
-            () => {
-              console.log('movie: ', movie)
-              console.log('movieT: ', movieT)
-              // console.log('store: ', store.getState())
-              // console.log('store: ', movie )
-
-              // setOdelete(movie)
-          }} style={{backgroundColor: '#00022230', height: 70}}>
-            <Text style={{color:'#000'}}>{odelete}  odelete</Text>
-            <Text style={{color:'#000'}}>{}  odelete</Text>
-          </TouchableOpacity>
-          </>
+          <View style={{flexDirection:'row',}}>
+          <BlockOk icone = {0} />
+          <ButtKategor kateteButt={movogore}/>
+          <ButtKategor kateteButt={'Универсальные'}/>
+          </View>
+          </> 
         }          
         renderItem={({ item }) => (
           <Item
+            kategore={item.kategore}
             human={item.human}
             min={item.min}
             number={item.number}
@@ -233,44 +188,29 @@ function FilterScreen(
         )}
         keyExtractor={item => item.id}
       />
-      {/* <FilterBlokOk numberF = {fdf} humanF='10'/> */}
       </View>
   );
 }
 
-// store.subscribe
-// function mapStateToProps(  state : any ) {
-//   return  { movie: state.search.movie }
-// }
+
 const mapStateToProps = (state: RootState) => {
   return  { 
     // movie: store.getState 
     movie: state.search.movie,
-    movieT: state.search.movieT
+    movieT: state.search.movieT,
+    movogore: state.search.movogore,
+    brah: state.search.brah
+  }
+}
+const dispatchStateToProps = (dispatch: any) => {
+  return  { 
+    searchChanged: (numberHuman: number, numberTime: any, kategory: any, brah: any ) => dispatch( searchChanged( numberHuman, numberTime, kategory, brah) ),
   }
 }
 export default connect(mapStateToProps)(FilterScreen);
-// export default connect(mapStateToProps)(TodoApp)     search.payload      () => console.log(store.getState())
-//     const mapStateToProps = state => {
-//       return {
-//         _fillHuman: initialState._fillHuman
-//       }
-//     }
-// function mapStateToProps(state: State) {
-//   return {
-//       visible: !(state.login && state.password),
-//   };}
-// export default (FilterScreen)
-// const mapStateToProps = function(state) {
-//   return {
-//     profile: state.user.profile,
-//     loggedIn: state.auth.loggedIn
-//   }
-// } connect(mapStateToProps)               
 
-// const mapStateToProps = (state: number) => { console.log(state); return { props: state.valueOf } }
-// export (FilterScreen);
-//      connect(mapStateToProps )     FFF    FilterScreen
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -315,11 +255,30 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: '#DCDCDC',
     // backgroundColor: 'green',
+    width: '90%',
+    flexDirection:'row',
+    height: 94,
+    marginTop:20,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  itemg: {
+    backgroundColor: '#DCDCDC',
+    // backgroundColor: 'green',
     width: 360,
     height: 100,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  textTimmy:{
+    fontSize: 15,
+    color:'#000'
+  },
+  textTimmy2:{
+    fontSize: 15,
+    color:'#fff'
   },
 
   centeredView: {
@@ -396,7 +355,26 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal:  10,
   },
-  textTimmy:{
-    fontSize: 15,
+  knok2:{
+    backgroundColor: '#2B67F6', 
+    marginTop: 10,
+    marginBottom: 5,
+    marginRight: 8,
+    borderRadius: 65,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal:  10,
+  },
+  knok3:{
+    backgroundColor: '#61CA85', 
+    marginTop: 10,
+    marginBottom: 5,
+    marginRight: 8,
+    borderRadius: 65,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal:  10,
   },
 });

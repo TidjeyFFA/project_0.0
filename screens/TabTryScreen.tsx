@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React, { useState } from 'react';
+import React, { useState,Component } from 'react';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 // import BlockOk from '../hooks/BlockOk';
@@ -7,16 +7,42 @@ import BlockFk from '../hooks/BlockOk';
 // import DATA from '../hooks/DATA';
 import { RootStackParamList } from '../types';
 
-import { StyleSheet, Modal, Alert, Pressable, Image, TouchableOpacity, SafeAreaView, TouchableOpacityBase} from 'react-native';
+import { StyleSheet, Modal, Alert, Pressable, Image, TouchableOpacity, SafeAreaView, TouchableOpacityBase, AsyncStorage, TextInput,} from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 // import  DATAMass from '../hooks/DATA';
 
 import { Text, View } from '../components/Themed'; 
 
 // DATAMass
+import { StatusBar } from 'react-native'
+
+// class AsyncStorageExample extends Component {
+//    state = {
+//       'name': ''
+//    }
+//    componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
+   
+//    setName = (value: any) => {
+//       AsyncStorage.setItem('name', value);
+//       this.setState({ 'name': value });
+//    }
+//    render() {
+//       return (
+//          <View style = {styles.container}>
+//             <TextInput style = {styles.textInput} autoCapitalize = 'none'
+//             onChangeText = {this.setName}/>
+//             <Text>
+//                {this.state.name}
+//             </Text>
+//          </View>
+//       )
+//    }
+// }
+// export  AsyncStorageExample
 
 
-// const result = DATA.filter(DATA => DATA.number > 11);
+
+// const result = DATA.filter(DATA => DATA.number > 11);    default
 
 export default function TabTryScreen({
   navigation,
@@ -24,9 +50,9 @@ export default function TabTryScreen({
   return (
     <ScrollView>
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{backgroundColor: '#000'}}><Text style={{color:'#fff'}}>NotFound</Text></TouchableOpacity>
+      {/* <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{backgroundColor: '#000'}}><Text style={{color:'#fff'}}>NotFound</Text></TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.replace('FilterSk')} style={{backgroundColor: '#000'}}><Text style={{color:'#fff'}}>FilterSk</Text></TouchableOpacity>
-     
+      */}
       <Image style={{width: 287, height: 197, margin: 20, marginRight: 20, marginLeft: 20,}}
         source={require('../img/F.png')}
       />
@@ -74,7 +100,7 @@ export default function TabTryScreen({
           <Text style={{fontSize:17, marginTop: 5  }}>Составление своих игр</Text>
         </View>
       </View>
-      <BlockFk/>
+      <BlockFk icone={1}/>
       {/* <BlockFk styllee='0'/> */}
     </View>
     </View>
@@ -106,9 +132,20 @@ export default function TabTryScreen({
 // }, []);
 
 const styles = StyleSheet.create({
+  //  container: {
+  //     flex: 1,
+  //     alignItems: 'center',
+  //     marginTop: 50
+  //  },
+  //  textInput: {
+  //     margin: 5,
+  //     height: 100,
+  //     borderWidth: 1,
+  //     backgroundColor: '#7685ed'
+  //  },
   container: {
     flex: 1,
-    marginTop: 50,
+    // marginTop: 50,
     backgroundColor: '#0D1B3D',
     alignItems: 'center',
     justifyContent: 'center',

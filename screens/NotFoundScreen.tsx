@@ -14,7 +14,7 @@ export default function NotFoundScreen({
     <View style={styles.container}>
       <View style={{
         // backgroundColor: 'red', 
-        width:'80%'
+        width:'90%'
         }}>
         <View style={{}}>
           <View style={{
@@ -49,22 +49,15 @@ export default function NotFoundScreen({
           <View style={{alignItems: 'center',}}>
           </View>
           <View style={{justifyContent:'center',  }}>
-            <TouchableOpacity style={styles.roundedButton} onPress={() => navigation.replace('Root')}>
+            <TouchableOpacity style={styles.roundedButton} onPress={() => navigation.navigate('Root')}>
               <Text style={{fontSize:17, color: '#fff'}}>Продолжить</Text>
             </TouchableOpacity>
-          </View>
-          <View style={{alignItems: 'center',}}>
-            <View style={styles.container}>
-              <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.emptyCartView}>
-                </View>
-              </ScrollView>
-            </View>
           </View>
         </View>
         <View style={{
           justifyContent: 'center',
           width: '100%',
+          marginTop: 50,
           // height:'36%',
           // backgroundColor: 'green',
           alignItems: 'center',
@@ -104,7 +97,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     marginBottom: 3,
-    marginTop: 80,
+    marginTop: 60,
     marginRight: 2,
     marginLeft: 5,
     justifyContent: 'center',

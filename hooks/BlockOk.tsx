@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
+import { useNavigation } from '@react-navigation/native';
 
 import { StyleSheet, Pressable, TouchableOpacity, Modal, Text, View} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import FilterSk from '../screens/FilterScreen'
 import FFF from '../screens/FilterScreen'
-import { ButtHuman, fillHumanPer, ButtTime, fillTimePer, } from '../store/index'
+import { Octicons } from '@expo/vector-icons'; 
+import { ButtHuman, ButtTime, ButtKategor } from '../store/index';
   
 
 
@@ -26,7 +28,7 @@ import { ButtHuman, fillHumanPer, ButtTime, fillTimePer, } from '../store/index'
         );
       }
 
-function Ragds({stylle}:{stylle: any}) {
+function Ragds({stylle, navigation}:{stylle: any, navigation: any}) {
   
   // const [modalVisible, setModalVisible] = useState(false);
     if (stylle=='fk'){
@@ -39,17 +41,29 @@ function Ragds({stylle}:{stylle: any}) {
   )
     }
   };
+  //  navigation navigation   , 'NotFound'>
 
-export default function BlockFk() {
+export default function BlockFk({icone, navigation }: StackScreenProps<RootStackParamList> ){
   const [modalVisible, setModalVisible] = useState(false);
-  
-  return (
-    <>
+  // const navigation = useNavigation
+  const textOOP = 
+    icone == 1 
+    ? 
     <TouchableOpacity
     style={[styles.button, styles.buttonOpen]}
     onPress={() => setModalVisible(true)}
-  ><Text style={styles.textStyle}>Оформить предзааказ</Text>
+  ><Text style={styles.textStyle}>Оформить предзааказ</Text> 
   </TouchableOpacity>
+    :  
+    <TouchableOpacity
+    style={[styles.button2, styles.buttonOpen]}
+    onPress={() => setModalVisible(true)}
+    ><Octicons name="settings" size={24} color= '#fff' />
+    </TouchableOpacity>
+    
+  return (
+    <View style={{/*alignItems: 'center', backgroundColor: '#fff'*/}}>
+      {textOOP}
   <Modal
     animationType="slide"
     transparent={true}
@@ -81,9 +95,9 @@ export default function BlockFk() {
           ><Text>   </Text></TouchableOpacity>
                                         
         </TouchableOpacity>
-        <View style={{width:'90%'}}>
+        <View style={{width:'90%', backgroundColor: '#fff', alignItems: 'center'}}>
           
-       <View style={{width: '90%', backgroundColor: '#000', }}>
+       <View style={{ backgroundColor: '#fff', alignItems: 'center' }}>
        <View style={styles.container}>
        <Text style={{fontSize: 32, fontWeight: "bold" }}>Подобрать игру</Text>
        {/* <Text>{borroo}</Text> */}
@@ -91,20 +105,19 @@ export default function BlockFk() {
        <View style={styles.gg}>
         
            <ButtHuman numberBatt={8} />
-         {/* extraData={selectedId} */}
-        
            <ButtHuman numberBatt={16} />
-           {/* <TabTab path={16} number={2}/> */}
            <ButtHuman numberBatt={32} />
            <ButtHuman numberBatt={64} />
+           <ButtHuman numberBatt={128} />
+           <ButtHuman numberBatt={256} />
+           <ButtHuman numberBatt={512} />
+         {/* extraData={selectedId} */}
+        
+           {/* <TabTab path={16} number={2}/> */}
            {/* <TabTab path={32} number={3}/>
            <TabTab path={64} number={4}/> */}
        </View>
        <View style={styles.gg}>
-           <ButtHuman numberBatt={128} />
-           <ButtHuman numberBatt={256} />
-           <ButtHuman numberBatt={512} />
-           <ButtHuman numberBatt={1} />
            {/* <TabTab path={128} number={5} />
            <TabTab path={256} number={6}/>
            <TabTab path={512} number={7}/> */}
@@ -125,51 +138,70 @@ export default function BlockFk() {
        </View>
        {/* TebTeb */}
        <Text style={{fontSize: 20, fontWeight: "600", marginTop: 10,  }}>Категория</Text>
-       <View style={styles.gg}>
-           <TouchableOpacity style={styles.knok}>
-             <Text style={styles.textTimmy}>Универсальные</Text>
-           </TouchableOpacity>
-           <TouchableOpacity style={styles.knok}>
-             <Text style={styles.textTimmy}>Знакомства</Text>
-           </TouchableOpacity>
+       <View style={styles.gg}>      
+           <ButtKategor kateteButt={'Универсальные'} sposob={0}/>
+           <ButtKategor kateteButt={'Знакомства'} sposob={0}/>
+           <ButtKategor kateteButt={'Эмоциональная разгрузка'} sposob={0}/>
+           <ButtKategor kateteButt={'Командообразование'} sposob={0}/>
+           <ButtKategor kateteButt={'Тактильные'} sposob={0}/>
+           <ButtKategor kateteButt={'Интерактивные'} sposob={0}/>
+           <ButtKategor kateteButt={'Психологические'} sposob={0}/>
+             {/* Знакомства    Эмоциональная разгрузка    Командообразование    Тактильные   Интерактивные   Психологические */}
        </View>
        <View style={styles.gg}>
-           <TouchableOpacity style={styles.knok}>
+           {/* <TouchableOpacity style={styles.knok}>
              <Text style={styles.textTimmy}>Эмоциональная разгрузка</Text>
-           </TouchableOpacity>
+           </TouchableOpacity> */}
        </View>
        <View style={styles.gg}>
-           <TouchableOpacity style={styles.knok}>
+
+           {/* <TouchableOpacity style={styles.knok}>
              <Text style={styles.textTimmy}>Командообразование</Text>
            </TouchableOpacity>
            <TouchableOpacity style={styles.knok}>
              <Text style={styles.textTimmy}>Тактильные</Text>
-           </TouchableOpacity>
+           </TouchableOpacity> */}
        </View>
        <View style={styles.gg}>
-           <TouchableOpacity style={styles.knok}>
+
+           {/* <TouchableOpacity style={styles.knok}>
              <Text style={styles.textTimmy}>Интерактивные</Text>
            </TouchableOpacity>
            <TouchableOpacity style={styles.knok}>
-             <Text style={styles.textTimmy}>Психологические</Text>
-           </TouchableOpacity>
+             <Text style={styles.textTimmy}>Психологические</Text>   FilterSk
+           </TouchableOpacity> */}
        </View>
        {/* <ButtFillOne/> */}
        {/* <BattFil/> */}
+       <TouchableOpacity 
+        onPress={()=>navigation.navigate('FilterSk') }
+        style={{
+                  backgroundColor: '#2B67F6',
+                  // width: 287,
+                  width: '90%',
+                  height: 56,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 86,
+                  marginBottom: 20,
+                  }}>
+                    <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
+                </TouchableOpacity>
      </View>
      </View>
      </View>
       </View>
     </ScrollView>
   </Modal>
-</>
+</View>
 )};
 
 
 const styles = StyleSheet.create({
     container: {
           // justifyContent: 'center',
-          backgroundColor: '#fff',
+          // backgroundColor: '#FF000020', 
+          // backgroundColor: '#fff',
           padding: 8,
         },
         paragraph: {
@@ -179,8 +211,10 @@ const styles = StyleSheet.create({
           textAlign: 'center',
         },
         gg:{
-          justifyContent: 'flex-start',
+          // justifyContent: 'flex-start',
           flexDirection: 'row',
+          flexWrap: 'wrap',
+          // backgroundColor: '#FF000030', 
           
         },
         knok:{
@@ -205,6 +239,19 @@ const styles = StyleSheet.create({
           marginTop: 24,
           marginBottom: 24,
           height:56,
+          alignItems:'center',
+          justifyContent:'center',
+          // elevation: 2
+        },
+        button2: {
+          borderRadius: 20,
+          // paddingHorizontal: 180,
+          // paddingVertical: 10,
+          // marginTop: 24,
+          // marginBottom: 24,
+          margin: 24,
+          width: 40,
+          height:40,
           alignItems:'center',
           justifyContent:'center',
           // elevation: 2

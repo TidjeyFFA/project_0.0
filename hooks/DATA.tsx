@@ -9,6 +9,8 @@ let fillHuman = 0;
 let fillKategor = '';
 let fillTime = 0;
 }
+
+//  Знакомства    Эмоциональная разгрузка    Командообразование    Тактильные   Интерактивные   Психологические
 export const DATA = [
   {
     id: '586etga0f-3da1-471f-bd96-145571e29d72',
@@ -17,16 +19,21 @@ export const DATA = [
     title: 'Third Item',
     number: 20,
     human: 20,
+    humanOt:  50,
+    kategore: 'Знакомства',
     min: 20,
+    mindo: 250,
   },
   {
     id: '586fgjfgn0f-3da1-471f-bd96-145jde29d72',
     name: 'драконор',
-    podrobn: 'драконы очень любят картошку, но картофельподает на них в суд',
+    podrobn: 'драконы очень любят картошку, но картофельподает на них в суд hghgfhsb dfr rthrt hreh dr her brt breh gergbe h herh regh erh erh erth erhg erhbethe5yhe her he5r hr',
     title: 'Third Item',
     number: 10,
     human: 10,
+    kategore: 'Эмоциональная разгрузка',
     min: 20,
+    mindo: 250,
   },
   {
     id: '58sgbgbsgb0f-3da1-471f-bd96-145wbregbr2',
@@ -35,7 +42,9 @@ export const DATA = [
     title: 'Tafrem',
     number: 15,
     human: 2,
+    kategore: 'Командообразование',
     min: 20,
+    mindo: 250,
   },
   {
     id: '58srsthyfjh0f-3da1-471f-bd96-145wbregbr2',
@@ -44,7 +53,20 @@ export const DATA = [
     title: 'Tafrem',
     number: 15,
     human: 200,
+    kategore: 'Тактильные',
     min: 20,
+    mindo: 250,
+  },
+  {
+    id: '58ssgvvgfds3da1-471f-bd96-14jbregbr2',
+    name: 'nhrfdshshnrshe',
+    podrobn: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
+    title: 'Tafrem',
+    number: 34,
+    human: 6265,
+    kategore: 'Интерактивные',
+    min: 30,
+    mindo: 250,
   },
   {
     id: '58sjdyjusrjy0f-3da1-471f-bd96-14jbregbr2',
@@ -53,7 +75,9 @@ export const DATA = [
     title: 'Tafrem',
     number: 15,
     human: 520,
+    kategore: 'Психологические',
     min: 20,
+    mindo: 250,
   },
 ];
 // class DATAMASS {

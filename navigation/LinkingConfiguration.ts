@@ -21,10 +21,14 @@ export default {
               TabTryScreen: 'try',
             },
           },
+          Filter: {
+            screens: {
+           FilterSk: 'fo',
+            }
+          }
         },
       },
       NotFound: '*',
-      FilterSk: '*',
     },
   },
 };

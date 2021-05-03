@@ -22,7 +22,21 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="игры"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      
+  //   tabBarOptions= {
+  //     activeTintColor: '#0a0a0a',
+  //     labelStyle: {
+  //         fontSize: ScreenUtil.scale(14),
+  //     },
+  //     style: {
+  //         backgroundColor: '#f7f7f7',
+  //         //----------add this line------------------------//
+  //         height: 70;
+  //         borderTopWidth: 1,
+  //         borderTopColor: 'red'
+  //     },
+  // }
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint, inactiveTintColor: '#000' }}>
       <BottomTab.Screen
         name="игры"
         component={TabOneNavigator}
@@ -51,14 +65,14 @@ export default function BottomTabNavigator() {
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: React.ComponentProps<typeof Foundation>['name']; color: string }) {
-  return <Foundation size={24} style={{ marginBottom: -3 }} {...props} />;
+  return <Foundation size={24} style={{ marginBottom: 0 }} {...props} />;
 }
 function TabBarIcon2(props: { name: React.ComponentProps<typeof MaterialIcons>['name']; color: string }) {
-  return <MaterialIcons size={24} style={{ marginBottom: -3 }} {...props} />;
+  return <MaterialIcons size={24} style={{ marginBottom: 0 }} {...props} />;
 }
 function TabBarIcon3(
   props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
-  return <FontAwesome5 size={24} style={{ marginBottom: 5 }} {...props} />;
+  return <FontAwesome5 size={20} style={{ marginBottom: 0 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
