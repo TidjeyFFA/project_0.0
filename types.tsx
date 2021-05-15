@@ -22,6 +22,9 @@ export type TabTryParamList = {
   TabTryScreen: undefined;
 };
 
+export const ARRAYLIKEPLUSE = 'ARRAYLIKEPLUSE'
+export const ARRAYLIKEMINUS = 'ARRAYLIKEMINUS'
 export const ID_MASSMIN = 'ID_MASSMIN'
 export const ID_MASSPUS = 'ID_MASSPUS'
 export const SEARCH_CHANGED = 'SEARCH_CHANGED'
+export const BRUH = 'BRUH'

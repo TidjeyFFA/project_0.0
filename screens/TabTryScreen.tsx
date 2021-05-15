@@ -7,7 +7,20 @@ import BlockFk from '../hooks/BlockOk';
 // import DATA from '../hooks/DATA';
 import { RootStackParamList } from '../types';
 
-import { StyleSheet, Modal, Alert, Pressable, Image, TouchableOpacity, SafeAreaView, TouchableOpacityBase, AsyncStorage, TextInput,} from 'react-native';
+import { 
+  StyleSheet, 
+  Modal, 
+  Alert, 
+  Pressable, 
+  Image, 
+  TouchableOpacity, 
+  SafeAreaView, 
+  TouchableOpacityBase, 
+  TextInput,
+} from 'react-native';
+// import { 
+//   AsyncStorage, 
+// } from 'react -native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 // import  DATAMass from '../hooks/DATA';
 
@@ -53,7 +66,13 @@ export default function TabTryScreen({
       {/* <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{backgroundColor: '#000'}}><Text style={{color:'#fff'}}>NotFound</Text></TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.replace('FilterSk')} style={{backgroundColor: '#000'}}><Text style={{color:'#fff'}}>FilterSk</Text></TouchableOpacity>
       */}
-      <Image style={{width: 287, height: 197, margin: 20, marginRight: 20, marginLeft: 20,}}
+      <Image style={{
+        width: 287, 
+        height: 197, 
+        margin: 20, 
+        marginRight: 20, 
+        marginLeft: 20,
+      }}
         source={require('../img/F.png')}
       />
       
@@ -100,7 +119,7 @@ export default function TabTryScreen({
           <Text style={{fontSize:17, marginTop: 5  }}>Составление своих игр</Text>
         </View>
       </View>
-      <BlockFk icone={1}/>
+      <BlockFk icone={1} navigation= {navigation } />
       {/* <BlockFk styllee='0'/> */}
     </View>
     </View>

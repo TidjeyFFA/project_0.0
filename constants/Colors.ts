@@ -17,3 +17,6 @@ export default {
     tabIconSelected: tintColorLight,
   },
 };
+
+
+//        полезные ссылки:   https://html5css.ru/colors/colors_rgb.php

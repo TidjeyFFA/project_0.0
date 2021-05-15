@@ -7,10 +7,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Text, View } from '../components/Themed';
 import { RootStackParamList } from '../types';
 import { DATA } from '../hooks/DATA'
-import { id_masspus } from '../hooks/actions';
+import { id_massplus, arrayLikePlus, arrayLikeMinus } from '../hooks/actions';
 import { RootState } from '../hooks/reducers';
 import { connect, } from 'react-redux'
 import { AntDesign } from '@expo/vector-icons'; 
+import { useLinkProps } from '@react-navigation/native';
 
 // const DATA = [        id_masspus
 //   {
@@ -54,7 +55,7 @@ function Item(
       onPress={
         () => {
         setModalVisible(true)
-        id_masspus(id, name)
+        id_massplus(id, name)
         }
       }
       style={[
@@ -156,11 +157,74 @@ function Item3(
   { id, name,}:
   {id: string, name: string,}) {
   return (
-    <Text style={{margin: 50}}>{name} {id} </Text>
+    <Text 
+    onPress={
+      () => {
+      
+      id_massplus(id, name)
+      // id_massplus( id,  name )
+      }
+    } style={{margin: 50}}>{name} {id} </Text>
   )}
-function Itemm(
-  { id, title, name, podrobn, number, human, min, }:
-  {id: string, title: string, name: string, podrobn: string, number: any, human: any, min: any,  }) {
+
+  
+export function Itemm({ 
+    id, 
+    title, 
+    name, 
+    detailed, 
+    number, 
+    human, 
+    min, 
+    id_masspus, 
+    kategore, 
+    mindo, 
+    arrayLikePlus, 
+    arrayLikeMinus, 
+    arrayLike 
+}:{
+    id: string,
+    title: string, 
+    name: string, 
+    detailed: string, 
+    number: any, 
+    human: any, 
+    min: any,  
+    id_masspus: any, 
+    kategore: any, 
+    mindo: any, 
+    arrayLikePlus: any, 
+    arrayLikeMinus: any, 
+    arrayLike: any
+  }) {
+  const [checkLike, setCheckLike] = useState(arrayLike.some(function(e: any){return e.id == id }) );
+    const BottomLike =  ( arrayLike.some(function(e: any){return e.id == id }) || checkLike ) ? 
+      
+      <TouchableOpacity style={{backgroundColor: '#FF000000'}} onPress={()=> {
+        arrayLikeMinus(id,) ,
+        setCheckLike(false)
+        }}>
+        <AntDesign name="heart" size={24} color="black" />
+      </TouchableOpacity>
+         : 
+      <TouchableOpacity style={{backgroundColor: '#FF000000'}} onPress={()=> {
+        arrayLikePlus(
+        id,
+        name,
+        detailed,
+        number,  
+        human,
+        kategore,
+        min,
+        mindo,
+        ) ,
+        setCheckLike(true)
+        }}>
+        <AntDesign name="hearto" size={24} color="black" />
+        {/* <MaterialCommunityIcons name="human-male" size={14} color="black" /> */}
+      </TouchableOpacity>
+        
+    
     const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
@@ -168,7 +232,9 @@ function Itemm(
     <TouchableOpacity
       onPress={
         () => {
-        setModalVisible(true)
+        setModalVisible(true),
+        
+        id_masspus(id, name)
         // id_masspus( id,  name )
         }
       }
@@ -192,14 +258,15 @@ function Itemm(
                 </View>
       {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
         <Text style={{fontSize: 20, }}>{podrobn}</Text>
-      </View> */}
-      {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+      </View>
+      <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
        <Text style={styles.title}>{title}</Text>
-      </View> */}
+      </View>                    */}
       </View>
-      <View style={{backgroundColor: '#FF000000'}}>
-        <MaterialCommunityIcons name="human-male" size={14} color="black" />
+      <View style={{ backgroundColor: '#00000000'}}>
+          {BottomLike}
       </View>
+      
     </TouchableOpacity>
       <Modal
         animationType="slide"
@@ -218,8 +285,8 @@ function Itemm(
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-            >
-              <TouchableOpacity
+            >              
+             <TouchableOpacity
                 style={{
                   backgroundColor: '#000',
                   borderRadius: 1 ,
@@ -229,7 +296,7 @@ function Itemm(
                   marginBottom: 10,
                 }}
               ><Text>   </Text></TouchableOpacity>
-            </TouchableOpacity>
+             </TouchableOpacity>
               <View style={{ width:'90%'}}>
                 
               <TouchableOpacity style={styles.button}>
@@ -248,15 +315,15 @@ function Itemm(
                   </TouchableOpacity>
                 </View>
                 <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                  <Text style={{fontSize: 20, }}>{podrobn}</Text>
+                  <Text style={{fontSize: 20, }}>{detailed}</Text>
                 </View>
-                {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                <Text style={styles.title}>{title}</Text>
-                </View> */}
+                <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+                  <Text style={styles.title}>{title}</Text>
+                </View> 
               </View>
-            <View style={{width:'90%'}}>
-                {/* <BlockOk path="lololol" /> */}
-            </View>
+            {/* <View style={{width:'90%'}}>
+                <BlockOk path="lololol" />
+            </View> */}
           </View>
       </Modal>
       </View>
@@ -265,44 +332,56 @@ function Itemm(
   );
 }
 
+function getRecentBlocks(blocks: Array<any>): Array<any> {
+  const recentBlocks = []
+
+  if (blocks.length > 0) 
+    recentBlocks.push(blocks[0])
+  
+  if (blocks.length > 1) 
+    recentBlocks.push(blocks[1])
+
+  return recentBlocks
+}
+
+
 function pervuyu() {
   return(
     <Text style={{color: '#ff8c39', fontSize: 28,}}>первую</Text>
   )
 }
-
-export default function TabOneScreen1({
+function Dadasa( {likeked}: any ) {
+  return likeked
+}
+// function check()
+export function TabOneScreen1({
   navigation,
   likeked,
+  mass,
+  id_massplus,
+  arrayLikePlus,
+  arrayLikeMinus,
+  arrayLike,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
   let DATATA
+  console.log('fghuedhgbefdbghef' , )
   // let massive = data.some(o => o.id === 2)
-  function Massive({id}:any) {
+  const Massive = ({id}:any) => {
     if (DATA.some(arr => arr.id === id)) {
       return true;
     }
     return false;
   }
   let DADADATA = likeked
+  // const [ getAt, setGetAt] = useState([]);
+  // setGetAt( likeked )
   return (
     //      {likeked.slice( 0, 2 )}    
     <View style={styles.container}>
-      <FlatList
-        data={DADADATA}
-        
-      
-      renderItem={({ item }: any) => (
-        <Item3
-          id={item.id}
-          name={item.name}
-        />
-      )}
-      keyExtractor={item => item.id}
-      />
 
       <FlatList
-        data={DATA}
-        // style={{alignItems:'center'}}     scrollEnabled= {false}  , backgroundColor: '#FF000030'
+        data={getRecentBlocks(likeked)}
+        // style={{alignItems:'center'}}   likeked  scrollEnabled= {false}  , backgroundColor: '#FF000030'
         ListHeaderComponent={
           <View style={{width:'100%',
             // backgroundColor: '#FF000020', 
@@ -359,13 +438,19 @@ export default function TabOneScreen1({
         // style={{alignItems:'center'}}     scrollEnabled= {false}  , backgroundColor: '#FF000030'
         renderItem={({ item }) => (
           <Itemm
+            arrayLike={arrayLike}
+            arrayLikeMinus={arrayLikeMinus}
+            arrayLikePlus={arrayLikePlus}
+            id_masspus={id_massplus}
             number={item.number}
             id={item.id}
             min={item.min}
             human={item.human}
             title={item.title}
             name={item.name}
-            podrobn={item.podrobn}
+            detailed={item.detailed}
+            kategore={item.kategore}
+            mindo={item.mindo}
           />
         )}
         keyExtractor={item => item.id}
@@ -373,17 +458,21 @@ export default function TabOneScreen1({
           </View>
 
         }
-        renderItem={({ item }) => (
-          <Item
+        renderItem={({ item }: any) => (
+          <Itemm
+            arrayLike={arrayLike}
+            arrayLikeMinus={arrayLikeMinus}
+            arrayLikePlus={arrayLikePlus}
+            id_masspus={id_massplus}
             number={item.number}
             id={item.id}
             min={item.min}
-            mindo={item.mindo}
             human={item.human}
             title={item.title}
             name={item.name}
-            podrobn={item.podrobn}
-
+            detailed={item.detailed}
+            kategore={item.kategore}
+            mindo={item.mindo}
           />
         )}
         keyExtractor={item => item.id}
@@ -400,23 +489,47 @@ const mapStateToProps = (state: RootState) => {
     // movieT: state.search.movieT,
     // movogore: state.search.movogore,
     // brah: state.search.brah
-    likeked: state.search.likeked
+    likeked: state.likeds.mass,
+    arrayLike: state.likeds.arrayLike,
+
   }
 }
 
 const dispatchStateToProps = (dispatch: any) => {
   return  { 
-    id_masspus: (
+    id_massplus: (
       likeked: any,
       names: any, 
-      ) => dispatch( id_masspus( 
+      ) => dispatch( id_massplus( 
       likeked,
-      names, 
+      names,  
       ) ),
+    arrayLikePlus: (
+    id: any,
+    name: any,
+   podrobn: any,
+   number: any,
+   human: any,
+   kategore: any,
+   min: any,
+   mindo: any,
+    ) => dispatch( arrayLikePlus(
+      id,
+      name,
+      podrobn,
+      number,
+      human,
+      kategore,
+      min,
+      mindo,
+    )),
+    arrayLikeMinus: ( id: any) => dispatch( arrayLikeMinus( id))
   }
 }
 
 export const TabOneScreen = connect(mapStateToProps, dispatchStateToProps)(TabOneScreen1);
+export const Dadadasa = connect(mapStateToProps)( Dadasa );
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

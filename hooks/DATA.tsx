@@ -15,7 +15,7 @@ export const DATA = [
   {
     id: '586etga0f-3da1-471f-bd96-145571e29d72',
     name: 'игра',
-    podrobn: 'картофель не любит есть своих сородичей',
+    detailed: 'картофель не любит есть своих сородичей',
     title: 'Third Item',
     number: 20,
     human: 20,
@@ -27,7 +27,7 @@ export const DATA = [
   {
     id: '586fgjfgn0f-3da1-471f-bd96-145jde29d72',
     name: 'драконор',
-    podrobn: 'драконы очень любят картошку, но картофельподает на них в суд hghgfhsb dfr rthrt hreh dr her brt breh gergbe h herh regh erh erh erth erhg erhbethe5yhe her he5r hr',
+    detailed: 'драконы очень любят картошку, но картофельподает на них в суд hghgfhsb dfr rthrt hreh dr her brt breh gergbe h herh regh erh erh erth erhg erhbethe5yhe her he5r hr',
     title: 'Third Item',
     number: 10,
     human: 10,
@@ -38,7 +38,7 @@ export const DATA = [
   {
     id: '58sgbgbsgb0f-3da1-471f-bd96-145wbregbr2',
     name: 'bulbik',
-    podrobn: 'buldik rghder ghbdr gbe rgb ',
+    detailed: 'buldik rghder ghbdr gbe rgb ',
     title: 'Tafrem',
     number: 15,
     human: 2,
@@ -49,7 +49,7 @@ export const DATA = [
   {
     id: '58srsthyfjh0f-3da1-471f-bd96-145wbregbr2',
     name: '2462452ik',
-    podrobn: '325647376y5e7e456ue45u ',
+    detailed: '325647376y5e7e456ue45u ',
     title: 'Tafrem',
     number: 15,
     human: 200,
@@ -60,7 +60,7 @@ export const DATA = [
   {
     id: '58ssgvvgfds3da1-471f-bd96-14jbregbr2',
     name: 'nhrfdshshnrshe',
-    podrobn: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
+    detailed: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
     title: 'Tafrem',
     number: 34,
     human: 6265,
@@ -71,7 +71,7 @@ export const DATA = [
   {
     id: '58sjdyjusrjy0f-3da1-471f-bd96-14jbregbr2',
     name: 'nhrfdshshnrshe',
-    podrobn: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
+    detailed: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
     title: 'Tafrem',
     number: 15,
     human: 520,

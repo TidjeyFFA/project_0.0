@@ -4,6 +4,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+// import store from './store';
+
 // import reducers from './hooks/reducers'
 // import ReduxThunk from 'redux-thunk'
 // import { createStore, applyMiddleware } from 'redux'
@@ -22,7 +24,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
+          <Navigation/>
           <StatusBar />
       </SafeAreaProvider>
     );

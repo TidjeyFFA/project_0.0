@@ -9,8 +9,8 @@ import { Image} from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import {TabOneScreen} from '../screens/TabOneScreen';
+import {TabTwoScreen} from '../screens/TabTwoScreen';
 import TabTryScreen from '../screens/TabTryScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabTryParamList } from '../types';
 

@@ -43,7 +43,7 @@ function Ragds({stylle, navigation}:{stylle: any, navigation: any}) {
   };
   //  navigation navigation   , 'NotFound'>
 
-export default function BlockFk({icone, navigation }: StackScreenProps<RootStackParamList> ){
+export default function BlockFk({icone, navigation }: any ){
   const [modalVisible, setModalVisible] = useState(false);
   // const navigation = useNavigation
   const textOOP = 
@@ -139,8 +139,8 @@ export default function BlockFk({icone, navigation }: StackScreenProps<RootStack
        {/* TebTeb */}
        <Text style={{fontSize: 20, fontWeight: "600", marginTop: 10,  }}>Категория</Text>
        <View style={styles.gg}>      
-           <ButtKategor kateteButt={'Универсальные'} sposob={0}/>
-           <ButtKategor kateteButt={'Знакомства'} sposob={0}/>
+           <ButtKategor kateteButt={'Универсальные'} sposob={0}  popolo={0} />
+           <ButtKategor kateteButt={'Знакомства'} sposob={0}  popolo={0} />
            <ButtKategor kateteButt={'Эмоциональная разгрузка'} sposob={0}/>
            <ButtKategor kateteButt={'Командообразование'} sposob={0}/>
            <ButtKategor kateteButt={'Тактильные'} sposob={0}/>
@@ -173,8 +173,30 @@ export default function BlockFk({icone, navigation }: StackScreenProps<RootStack
        </View>
        {/* <ButtFillOne/> */}
        {/* <BattFil/> */}
+
+           {
+    icone == 1 
+    ? 
+    <TouchableOpacity 
+     onPress={()=>{
+       navigation.navigate('FilterSk')
+       setModalVisible(!modalVisible)
+       } }
+     style={{
+               backgroundColor: '#2B67F6',
+               // width: 287,
+               width: '90%',
+               height: 56,
+               alignItems: 'center',
+               justifyContent: 'center',
+               borderRadius: 86,
+               marginBottom: 20,
+               }}>
+                 <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
+             </TouchableOpacity>
+    :  
        <TouchableOpacity 
-        onPress={()=>navigation.navigate('FilterSk') }
+       onPress={() => setModalVisible(!modalVisible)}
         style={{
                   backgroundColor: '#2B67F6',
                   // width: 287,
@@ -187,6 +209,9 @@ export default function BlockFk({icone, navigation }: StackScreenProps<RootStack
                   }}>
                     <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
                 </TouchableOpacity>
+
+    }
+       {/* <BattonNavigate/> */}
      </View>
      </View>
      </View>
@@ -195,6 +220,10 @@ export default function BlockFk({icone, navigation }: StackScreenProps<RootStack
   </Modal>
 </View>
 )};
+
+
+// function BattonNavigate({navigation}: any)  {
+// }
 
 
 const styles = StyleSheet.create({

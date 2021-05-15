@@ -8,32 +8,30 @@ import { RootState } from '../hooks/reducers';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { DATA } from '../hooks/DATA';
 import { searchChanged, bruhRedux } from '../hooks/actions';
-import { id_masspus } from '../hooks/actions';
+import { id_massplus, arrayLikePlus, arrayLikeMinus  } from '../hooks/actions';
 import { AntDesign } from '@expo/vector-icons'; 
+// import { Itemm } from './TabOneScreen'
 
 
 let horse = 1
 let goblin = 0
 
-function TabTwoScreen1({ bruh }: any) {
+function TabTwoScreen1({ 
+  arrayLike, 
+  arrayLikePlus,
+  arrayLikeMinus, }: any) {
   
   const [goblinn, setGoblin] = useState(0);
 
- if(goblinn>0) {
+ if(arrayLike.length == 0) {
     return (
       <View style={styles.container}>
-      <TouchableOpacity 
-        onPress={ () => {
-            bruhRedux( horse )
-            setGoblin(0)
-          }
-        }>
-          <Text style={{marginTop:50}}>AAAAAAAA</Text>
-      </TouchableOpacity>
         <>
-        <Image style={{}}
+        <View style={styles.centeredViewBEZ }>
+        <Image style={{ height: 255, width: 153}}
           source={require('../img/menuPusto.png')}
         />
+        </View>
         <Text style={{fontSize: 20,}}>Добавь первую любимую игру</Text>
         </>
       </View>
@@ -41,29 +39,24 @@ function TabTwoScreen1({ bruh }: any) {
     );} else { return (
       <View style={styles.container}>
       <FlatList
-      data= {DATA} 
+      data= {arrayLike} 
       style={{width: '100%', alignContent: 'center'}}    
-      ListHeaderComponent={
-      <TouchableOpacity 
-      style={{ alignContent: 'center', flex: 1, backgroundColor:'#00003030'}}
-        onPress={
-          () => {
-          bruhRedux( goblin )
-          setGoblin(1)
-          }
-        }>
-          <Text style={{marginTop:50, textAlign: 'center'}}>AAAAAAAA</Text>
-      </TouchableOpacity>}          
+      // ListHeaderComponent={}          
       renderItem={({ item }) => (
-        <Item
-          kategore={item.kategore}
-          human={item.human}
-          min={item.min}
-          number={item.number}
-          id={item.id}
-          title={item.title}
-          name={item.name}
-          podrobn={item.podrobn}
+        <Itemm
+        arrayLike={arrayLike}
+        arrayLikeMinus={arrayLikeMinus}
+        arrayLikePlus={arrayLikePlus}
+        id_masspus={id_massplus}
+        number={item.number}
+        id={item.id}
+        min={item.min}
+        human={item.human}
+        title={item.title}
+        name={item.name}
+        detailed={item.detailed}
+        kategore={item.kategore}
+        mindo={item.mindo}
         />
       )}
       keyExtractor={item => item.id}
@@ -80,21 +73,50 @@ const mapStateToProps = (state: RootState) => {
     // movogore: state.search.movogore,
     // brah: state.search.brah
     // likeked: state.search.likeked
-    bruh: state.search.bruh
+    // bruh: state.search.bruh
+    arrayLike: state.likeds.arrayLike
   }
 }
 const dispatchStateToProps = (dispatch: any) => {
   return  { 
     // id_mass: (likeked: any) => 
-    bruhRedux: (bruhh: any) => 
+    // bruhRedux: (bruhh: any) => dispatch( bruhRedux( bruhh ) ),
     // dispatch( id_masspus( likeked ) ),
-    dispatch( bruhRedux( bruhh ) ),
+    id_massplus: (
+      likeked: any,
+      names: any, 
+      ) => dispatch( id_massplus( 
+      likeked,
+      names,  
+      ) ),
+    arrayLikePlus: (
+    id: any,
+    name: any,
+   podrobn: any,
+   number: any,
+   human: any,
+   kategore: any,
+   min: any,
+   mindo: any,
+    ) => dispatch( arrayLikePlus(
+      id,
+      name,
+      podrobn,
+      number,
+      human,
+      kategore,
+      min,
+      mindo,
+    )),
+    arrayLikeMinus: ( id: any) => dispatch( arrayLikeMinus( id))
+  
   }
 }
 
-export const TabTwoScreen2 = connect(mapStateToProps, dispatchStateToProps)(TabTwoScreen1);
 
-export default function TabTwoScreen() {
+export const TabTwoScreen = connect(mapStateToProps, dispatchStateToProps)(TabTwoScreen1);
+
+export function TabTwoScreen2() {
   return(
     <>
       {/* <TouchableOpacity></TouchableOpacity> */}
@@ -104,116 +126,176 @@ export default function TabTwoScreen() {
 }
 
 
-function Item(
-  { id, title, name, podrobn, number, human, min, kategore, }: any) {
-    const [modalVisible, setModalVisible] = useState(false);
-  return (
-    <View style={styles.centeredView}>
-      <View style={{alignItems:'center', width:'90%'}}>
-    <TouchableOpacity
-      onPress={() => setModalVisible(true)}
-      style={[
-        styles.item,
-      ]}
-    >
-      <View style={{width:'80%', backgroundColor: '#FF000000'}}>
-      <View style={{ flexDirection:'row', backgroundColor:'#FF000000' }}>
-                  <TouchableOpacity style={styles.buttonFil2}>
-                     <MaterialCommunityIcons name="human-male" size={14} color="black" />
-                     <Text style={{fontSize:15,}}> до {human} чел </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.buttonFil2}>
-                     <Text> до {min} мин </Text>
-                  </TouchableOpacity>
-                </View>
-        
-      <View style={{ flexDirection:'row',  backgroundColor: '#EE16D300' }}>
-        <Text style={{fontSize: 20,}}>{name}</Text>
-      </View>
-      <Text style={{flexWrap: 'wrap'}}>  {podrobn} </Text>
-      {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-        <Text style={{fontSize: 20, }}>{podrobn}</Text>
-      </View> */}
-      {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-       <Text style={styles.title}>{title}</Text>          backgroundColor: '#fff', FF000000
-      </View> */}
-      </View>
-      <TouchableOpacity style={{height: 30, width: 30, alignItems: 'center', justifyContent: 'center'}}>
-      <AntDesign name="hearto" size={18} color="black" />
-      </TouchableOpacity>
+ function Itemm({ 
+  id, 
+  title, 
+  name, 
+  detailed, 
+  number, 
+  human, 
+  min, 
+  id_masspus, 
+  kategore, 
+  mindo, 
+  arrayLikePlus, 
+  arrayLikeMinus, 
+  arrayLike 
+}:{
+  id: string,
+  title: string, 
+  name: string, 
+  detailed: string, 
+  number: any, 
+  human: any, 
+  min: any,  
+  id_masspus: any, 
+  kategore: any, 
+  mindo: any, 
+  arrayLikePlus: any, 
+  arrayLikeMinus: any, 
+  arrayLike: any
+}) {
+const [checkLike, setCheckLike] = useState(arrayLike.some(function(e: any){return e.id == id }) );
+  const BottomLike =  ( checkLike ) ? 
+    
+    <TouchableOpacity style={{backgroundColor: '#FF000000'}} onPress={()=> {
+      arrayLikeMinus(id,) ,
+      setCheckLike(false)
+      }}>
+      <AntDesign name="heart" size={24} color="black" />
     </TouchableOpacity>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-          <View style={styles.modalView}>
-            <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}
-              style={{
-                height: 20,
-                width: '80%',
-                // backgroundColor: '#00EE3C',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#000',
-                  borderRadius: 1 ,
-                  height: 1,
-                  width: 40,
-                  marginTop: 10,
-                  marginBottom: 10,
-                }}
-              ><Text>   </Text></TouchableOpacity>
-            </TouchableOpacity>
-              <View style={{ width:'90%'}}>
-                
-              <TouchableOpacity style={styles.button}>
-                     <Text>{min}</Text>
-                  </TouchableOpacity>
-                <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                  <Text style={{fontSize: 32, fontWeight: 'bold' }}>{name}</Text>
-                </View>
-                <View style={{ flexDirection:'row',  }}>
-                  <TouchableOpacity style={styles.button}>
-                     <MaterialCommunityIcons name="human-male" size={14} color="black" />
-                     <Text> до {human} чел </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.button}>
-                     <Text> {kategore}  </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.button}>
-                     <Text> до {min} мин </Text>
-                  </TouchableOpacity>
-                </View>
-                <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                  <Text style={{fontSize: 20, }}>{podrobn}</Text>
-                </View>
-                {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                <Text style={styles.title}>{title}</Text>
-                </View> */}
+       : 
+    <TouchableOpacity style={{backgroundColor: '#FF000000'}} onPress={()=> {
+      arrayLikePlus(
+      id,
+      name,
+      detailed,
+      number,  
+      human,
+      kategore,
+      min,
+      mindo,
+      ) ,
+      setCheckLike(true)
+      }}>
+      <AntDesign name="hearto" size={24} color="black" />
+      {/* <MaterialCommunityIcons name="human-male" size={14} color="black" /> */}
+    </TouchableOpacity>
+      
+  
+  const [modalVisible, setModalVisible] = useState(false);
+return (
+  <View style={styles.centeredView}>
+    <View style={{alignItems:'center', width:'96%'}}>
+  <TouchableOpacity
+    onPress={
+      () => {
+      setModalVisible(true),
+      
+      id_masspus(id, name)
+      // id_masspus( id,  name )
+      }
+    }
+    style={[
+      styles.item,
+    ]}
+  >
+    <View style={{width:'80%', backgroundColor: '#FF000000'}}>
+      
+    <View style={{ flexDirection:'row',  backgroundColor: '#EE16D300' }}>
+      <Text style={{fontSize: 20,}}>{name}</Text>
+    </View>
+    <View style={{ flexDirection:'row', backgroundColor:'#FF000000' }}>
+                <TouchableOpacity style={styles.buttonFil2}>
+                   <MaterialCommunityIcons name="human-male" size={14} color="black" />
+                   <Text style={{fontSize:15,}}> до {human} чел </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonFil2}>
+                   <Text> до {min} мин </Text>
+                </TouchableOpacity>
               </View>
-            <View style={{width:'90%'}}>
-                {/* <BlockOk path="lololol" /> */}
-            </View>
-          </View>
-      </Modal>
-      </View>
+    {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+      <Text style={{fontSize: 20, }}>{podrobn}</Text>
+    </View>
+    <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+     <Text style={styles.title}>{title}</Text>
+    </View>                    */}
+    </View>
+    <View style={{ backgroundColor: '#00000000'}}>
+        {BottomLike}
     </View>
     
-  );
+  </TouchableOpacity>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={() => {
+        setModalVisible(!modalVisible);
+      }}
+    >
+        <View style={styles.modalView}>
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}
+            style={{
+              height: 20,
+              width: '80%',
+              // backgroundColor: '#00EE3C',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >              
+           <TouchableOpacity
+              style={{
+                backgroundColor: '#000',
+                borderRadius: 1 ,
+                height: 1,
+                width: 40,
+                marginTop: 10,
+                marginBottom: 10,
+              }}
+            ><Text>   </Text></TouchableOpacity>
+           </TouchableOpacity>
+            <View style={{ width:'90%'}}>
+              
+            <TouchableOpacity style={styles.button}>
+                   <Text>{min}</Text>
+                </TouchableOpacity>
+              <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+                <Text style={{fontSize: 32, fontWeight: 'bold' }}>{name}</Text>
+              </View>
+              <View style={{ flexDirection:'row',  }}>
+                <TouchableOpacity style={styles.button}>
+                   <MaterialCommunityIcons name="human-male" size={14} color="black" />
+                   <Text> до {human} чел </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                   <Text> до {min} мин </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+                <Text style={{fontSize: 20, }}>{detailed}</Text>
+              </View>
+              <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+                <Text style={styles.title}>{title}</Text>
+              </View> 
+            </View>
+          {/* <View style={{width:'90%'}}>
+              <BlockOk path="lololol" />
+          </View> */}
+        </View>
+    </Modal>
+    </View>
+  </View>
+  
+);
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FF000030'
+    // backgroundColor: '#FF000030'
   },
   title: {
     fontSize: 20,
@@ -269,10 +351,16 @@ const styles = StyleSheet.create({
     // opacity: 400,
     alignItems: "center",
   },
+  centeredViewBEZ: {
+    // backgroundColor: "#EE00EE",
+    justifyContent: "center",
+    // opacity: 400,
+    alignItems: "center",
+  },
   modalView: {
     backgroundColor: "#fff",
     borderRadius: 20,
-    marginTop: 250,
+    marginTop: 20,
     width: '100%',
     height: 1000,
     alignItems: "center",

@@ -46,7 +46,7 @@ const ButtTime1 = ({timeBatt, searchChanged, movie, movieT, movogore, brah}: any
   }
 
   
-const ButtKategor1 = ({kateteButt, searchChanged, movie, movieT, movogore, brah }: any ) => {
+const ButtKategor1 = ({kateteButt, searchChanged, movie, movieT, movogore, brah, popolo }: any ) => {
   return(
     <TouchableOpacity
      style={(movogore == kateteButt) ? styles.knok2 : styles.knok} 

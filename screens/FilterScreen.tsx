@@ -118,13 +118,15 @@ export function FFF(props: number) {
 
   const fdf = '0';
 function FilterScreen( 
-  { navigation, searchChanged, movie, movieT, movogore, brah  }: StackScreenProps<RootStackParamList, 'FilterSk'>,
-  
+  { navigation, searchChanged, movie, movieT, movogore, brah  }
+  : StackScreenProps<RootStackParamList, 'FilterSk'>,
   ) {
     const props = {}
     // const { movie } = props
     // const { movie } = props;     
-  console.log('thise props', props);
+
+  // console.log('thise props', props);
+  
   // useEffect(() => {
 
   //   const backAction = () => navigation.replace('NotFound');
@@ -158,19 +160,22 @@ function FilterScreen(
     const [nolik, setNolik] = useState(0);
 
     const [odelete, setOdelete] = useState(0);
+
+  let movieTTT = () => {if(movie>1) {return(movie)} else {return(0)} }
+
   return (
-      <View style={{backgroundColor: '#fff', flex: 1, marginTop: 50, }}>
+      <View style={{backgroundColor: '#fff', flex: 1, /* marginTop: 50, */ }}>
           <FlatList
-        data= {DATA.filter(DATA => DATA.human > movie && DATA.min > movieT && DATA.kategore == movogore)  }     
+        data= {DATA.filter(DATA => DATA.human > movie && DATA.min > movieT && (DATA.kategore == movogore || movogore == '') )  }     
         ListHeaderComponent={
           <>
-          <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{  height:40, width: 80, backgroundColor: '#000'}}>
+          <TouchableOpacity onPress={() => navigation.replace('NotFound')} style={{  marginTop: 50, height:40, width: 80, backgroundColor: '#000'}}>
               <Text style={{color:'#fff'}}>NotFound</Text>
           </TouchableOpacity>
           <View style={{flexDirection:'row',}}>
           <BlockOk icone = {0} />
-          <ButtKategor kateteButt={movogore}/>
-          <ButtKategor kateteButt={'Универсальные'}/>
+          <ButtKategor kateteButt={movogore} popolo={1}/>
+          <ButtKategor kateteButt={'Универсальные'} popolo={0} />
           </View>
           </> 
         }          
