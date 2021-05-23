@@ -56,7 +56,7 @@ export default function BlockFk({icone, navigation }: any ){
   </TouchableOpacity>
     :  
     <TouchableOpacity
-    style={[styles.button2, styles.buttonOpen]}
+    style={[styles.button3, styles.buttonOpen]}
     onPress={() => setModalVisible(true)}
     ><Octicons name="settings" size={24} color= '#fff' />
     </TouchableOpacity>
@@ -141,11 +141,11 @@ export default function BlockFk({icone, navigation }: any ){
        <View style={styles.gg}>      
            <ButtKategor kateteButt={'Универсальные'} sposob={0}  popolo={0} />
            <ButtKategor kateteButt={'Знакомства'} sposob={0}  popolo={0} />
-           <ButtKategor kateteButt={'Эмоциональная разгрузка'} sposob={0}/>
-           <ButtKategor kateteButt={'Командообразование'} sposob={0}/>
-           <ButtKategor kateteButt={'Тактильные'} sposob={0}/>
-           <ButtKategor kateteButt={'Интерактивные'} sposob={0}/>
-           <ButtKategor kateteButt={'Психологические'} sposob={0}/>
+           <ButtKategor kateteButt={'Эмоциональная разгрузка'} sposob={0}  popolo={0} />
+           <ButtKategor kateteButt={'Командообразование'} sposob={0}  popolo={0} />
+           <ButtKategor kateteButt={'Тактильные'} sposob={0}  popolo={0} />
+           <ButtKategor kateteButt={'Интерактивные'} sposob={0}  popolo={0} />
+           <ButtKategor kateteButt={'Психологические'} sposob={0}  popolo={0} />
              {/* Знакомства    Эмоциональная разгрузка    Командообразование    Тактильные   Интерактивные   Психологические */}
        </View>
        <View style={styles.gg}>
@@ -186,11 +186,12 @@ export default function BlockFk({icone, navigation }: any ){
                backgroundColor: '#2B67F6',
                // width: 287,
                width: '90%',
-               height: 56,
                alignItems: 'center',
                justifyContent: 'center',
-               borderRadius: 86,
-               marginBottom: 20,
+               borderRadius: 26,
+               marginBottom: 80,
+               paddingVertical: 8,
+               paddingHorizontal:  20,
                }}>
                  <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
              </TouchableOpacity>
@@ -201,11 +202,12 @@ export default function BlockFk({icone, navigation }: any ){
                   backgroundColor: '#2B67F6',
                   // width: 287,
                   width: '90%',
-                  height: 56,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  borderRadius: 86,
-                  marginBottom: 20,
+                  borderRadius: 46,
+                  marginBottom: 80,
+                  paddingVertical: 8,
+                  paddingHorizontal:  20,
                   }}>
                     <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
                 </TouchableOpacity>
@@ -284,6 +286,22 @@ const styles = StyleSheet.create({
           alignItems:'center',
           justifyContent:'center',
           // elevation: 2
+        },
+        button3: {
+          borderRadius: 20,
+          // paddingHorizontal: 180,
+          // paddingVertical: 10,
+          // marginTop: 24,
+          // marginBottom: 24,
+          margin: 5,
+          marginRight: 15,
+          // width: 5,
+          // height:5,
+          alignItems:'center',
+          justifyContent:'center',
+          // elevation: 2
+    paddingVertical: 6,
+    paddingHorizontal:  7,
         },
         buttonOpen: {
           backgroundColor: "#2B5CEE",

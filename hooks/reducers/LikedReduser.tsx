@@ -48,7 +48,15 @@ export default (state = INITIAL, action: any) => {
             }
             return{
                 ...state,
-                mass: [  {id: action.likekede, name: action.namese}, ...state.mass ],
+                mass: [ {id: action.likekede, 
+                    name: action.namese,
+                    detailed: action.detailed,
+                    number: action.number,  
+                    human: action.human,
+                    kategore: action.kategore,
+                    min: action.min,
+                    mindo: action.mindo,
+                }, ...state.mass,   ],
                 // likeked:[...state.likeked,  {id: action.likekede, name: action.namese} ]
             };
         case ARRAYLIKEPLUSE:
@@ -59,7 +67,7 @@ export default (state = INITIAL, action: any) => {
                     {
                         id: action.id, 
                         name: action.name,
-                        podrobn: action.podrobn,
+                        detailed: action.detailed,
                         number: action.number,
                         human: action.human,
                         kategore: action.kategore,

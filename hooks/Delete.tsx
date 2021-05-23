@@ -23,7 +23,7 @@ const Flatlistexample = () => {
   const filteredList = useMemo(
     () =>
       DATA.filter(item => {
-        const itemText = `${item.name.toLowerCase()} ${item.podrobn.toLowerCase()}`
+        const itemText = `${item.name.toLowerCase()} ${item.detailed.toLowerCase()}`
         return itemText.indexOf(parsedSearch) > -1 // returns `true` if search is found in string
       }),
     [parsedSearch], // this will only run if parsedSearch changes

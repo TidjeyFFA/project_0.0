@@ -23,7 +23,7 @@ export default {
           },
           Filter: {
             screens: {
-           FilterSk: 'fo',
+           FilterSk: 'fill',
             }
           }
         },

@@ -14,7 +14,7 @@ let fillTime = 0;
 export const DATA = [
   {
     id: '586etga0f-3da1-471f-bd96-145571e29d72',
-    name: 'игра',
+    name: 'Игра',
     detailed: 'картофель не любит есть своих сородичей',
     title: 'Third Item',
     number: 20,
@@ -26,8 +26,8 @@ export const DATA = [
   },
   {
     id: '586fgjfgn0f-3da1-471f-bd96-145jde29d72',
-    name: 'драконор',
-    detailed: 'драконы очень любят картошку, но картофельподает на них в суд hghgfhsb dfr rthrt hreh dr her brt breh gergbe h herh regh erh erh erth erhg erhbethe5yhe her he5r hr',
+    name: 'Драконор',
+    detailed: 'драконы очень любят картошку, но картофельподает на них в суд hghgfhsb dfr rthrt hreh dr her brt breh gergbe h herh regh erh erh erth erhg erhbethe5 dghrsdhbdsh srhns drth rsth srth yrt hrgfdhswrtsh rsdh erh ew64yh bwrth  xfdgbhrdshe4r b5 ghe45wgr4eh 4b5h rthbetr4yhwrs4thyhe her he5r hr',
     title: 'Third Item',
     number: 10,
     human: 10,
@@ -37,7 +37,7 @@ export const DATA = [
   },
   {
     id: '58sgbgbsgb0f-3da1-471f-bd96-145wbregbr2',
-    name: 'bulbik',
+    name: 'Тulbik',
     detailed: 'buldik rghder ghbdr gbe rgb ',
     title: 'Tafrem',
     number: 15,
@@ -48,7 +48,7 @@ export const DATA = [
   },
   {
     id: '58srsthyfjh0f-3da1-471f-bd96-145wbregbr2',
-    name: '2462452ik',
+    name: 'Р462452ik',
     detailed: '325647376y5e7e456ue45u ',
     title: 'Tafrem',
     number: 15,
@@ -59,7 +59,7 @@ export const DATA = [
   },
   {
     id: '58ssgvvgfds3da1-471f-bd96-14jbregbr2',
-    name: 'nhrfdshshnrshe',
+    name: 'ПАhrfdshshnrshe',
     detailed: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
     title: 'Tafrem',
     number: 34,
@@ -70,7 +70,7 @@ export const DATA = [
   },
   {
     id: '58sjdyjusrjy0f-3da1-471f-bd96-14jbregbr2',
-    name: 'nhrfdshshnrshe',
+    name: 'Рhrfdshshnrshe',
     detailed: 'bhjo hjkipo gb gt tgytfug ufg uftg utgfutg ',
     title: 'Tafrem',
     number: 15,

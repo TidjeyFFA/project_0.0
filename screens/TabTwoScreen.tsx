@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Modal, FlatList, Text,  BackHandler,  TouchableOpacity, View, Image, ScrollView, Alert, StatusBar,} from 'react-native';
+import { StyleSheet, Dimensions, Modal, FlatList, Text,  BackHandler,  TouchableOpacity, View, Image, ScrollView, Alert, StatusBar,} from 'react-native';
 
 
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -11,6 +11,11 @@ import { searchChanged, bruhRedux } from '../hooks/actions';
 import { id_massplus, arrayLikePlus, arrayLikeMinus  } from '../hooks/actions';
 import { AntDesign } from '@expo/vector-icons'; 
 // import { Itemm } from './TabOneScreen'
+
+
+let deviceWidth = Dimensions.get('window').width
+let deviceHeight = Dimensions.get('window').height
+let deviceHeightHalf = deviceHeight/2
 
 
 let horse = 1
@@ -85,9 +90,21 @@ const dispatchStateToProps = (dispatch: any) => {
     id_massplus: (
       likeked: any,
       names: any, 
+     detailed: any,
+     number: any,
+     human: any,
+     kategore: any,
+     min: any,
+     mindo: any,
       ) => dispatch( id_massplus( 
-      likeked,
-      names,  
+        likeked,
+        names,
+        detailed,
+        number,
+        human,
+        kategore,
+        min,
+        mindo,
       ) ),
     arrayLikePlus: (
     id: any,
@@ -156,13 +173,13 @@ export function TabTwoScreen2() {
   arrayLike: any
 }) {
 const [checkLike, setCheckLike] = useState(arrayLike.some(function(e: any){return e.id == id }) );
-  const BottomLike =  ( checkLike ) ? 
+  const BottomLike =  ( arrayLike.some(function(e: any){return e.id == id }) ) ? 
     
     <TouchableOpacity style={{backgroundColor: '#FF000000'}} onPress={()=> {
       arrayLikeMinus(id,) ,
       setCheckLike(false)
       }}>
-      <AntDesign name="heart" size={24} color="black" />
+      <AntDesign name="heart" size={24} color="#FF8C39" />
     </TouchableOpacity>
        : 
     <TouchableOpacity style={{backgroundColor: '#FF000000'}} onPress={()=> {
@@ -181,7 +198,34 @@ const [checkLike, setCheckLike] = useState(arrayLike.some(function(e: any){retur
       <AntDesign name="hearto" size={24} color="black" />
       {/* <MaterialCommunityIcons name="human-male" size={14} color="black" /> */}
     </TouchableOpacity>
+    
+  const [bigDetailed, setBigDetailed] = useState(true);
+
+      const BigDetailed = (bigDetailed) ? 
+      <>
+    <View style={{ flexDirection:'row',  backgroundColor: '#FF000000' }}>
       
+      <Text numberOfLines={5} style={{  fontSize: 15,  color: '#000000',  }}>{detailed}</Text>
+    </View>
+    <TouchableOpacity onPress={ ()=> setBigDetailed(false)}>
+      <Text style={{color: 'blue'}}>
+        далее...
+      </Text>
+    </TouchableOpacity>
+    </>
+    : 
+    <>
+  <View style={{ flexDirection:'row',  backgroundColor: '#FF000000' }}>
+    
+    <Text style={{  fontSize: 15,  color: '#000000',  }}>{detailed}</Text>
+  </View>
+  <TouchableOpacity onPress={ ()=> setBigDetailed(true)}>
+    <Text style={{color: 'blue'}}>
+      далее...
+    </Text>
+  </TouchableOpacity>
+  </>
+
   
   const [modalVisible, setModalVisible] = useState(false);
 return (
@@ -200,90 +244,122 @@ return (
       styles.item,
     ]}
   >
-    <View style={{width:'80%', backgroundColor: '#FF000000'}}>
-      
-    <View style={{ flexDirection:'row',  backgroundColor: '#EE16D300' }}>
-      <Text style={{fontSize: 20,}}>{name}</Text>
-    </View>
-    <View style={{ flexDirection:'row', backgroundColor:'#FF000000' }}>
-                <TouchableOpacity style={styles.buttonFil2}>
-                   <MaterialCommunityIcons name="human-male" size={14} color="black" />
-                   <Text style={{fontSize:15,}}> до {human} чел </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonFil2}>
-                   <Text> до {min} мин </Text>
-                </TouchableOpacity>
-              </View>
-    {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-      <Text style={{fontSize: 20, }}>{podrobn}</Text>
-    </View>
-    <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-     <Text style={styles.title}>{title}</Text>
-    </View>                    */}
-    </View>
+    <View style={{ width: '90%', flexDirection:'row', justifyContent: 'space-between' ,  backgroundColor: '#EE16D300' }}>
+      <TouchableOpacity style={{
+        backgroundColor: 'green', 
+        borderRadius: 15, 
+        paddingHorizontal:  4, 
+        paddingVertical:  6, 
+  }}><Text style={{color: '#fff'}}> {kategore} </Text></TouchableOpacity>
     <View style={{ backgroundColor: '#00000000'}}>
         {BottomLike}
     </View>
+    </View>
+    <View style={{width:'88%', backgroundColor: '#FF000000'}}>
+      
+      <Text style={{fontSize: 20, fontWeight:'bold', marginTop: 5 }}>{name}</Text>
+      <View style={{ flexDirection:'row', backgroundColor:'#FF000000' }}>
+          <TouchableOpacity style={styles.buttonFil2}>
+              <MaterialCommunityIcons name="human-male" size={14} color="black" />
+              <Text style={{fontSize:15,}}> до {human} чел </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonFil2}>
+              <Text> до {min} мин </Text>
+          </TouchableOpacity>
+      </View>
+    {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+     <Text style={styles.title}>{title}</Text>
+    </View>                    */}
+    {BigDetailed}
+
+
+    </View>
     
   </TouchableOpacity>
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={modalVisible}
-      onRequestClose={() => {
-        setModalVisible(!modalVisible);
-      }}
-    >
-        <View style={styles.modalView}>
-          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          statusBarTranslucent={true}
+          // style={{ alignItems: "flex-end", backgroundColor: '#FF000030'}}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+         <ScrollView style={{flex: 1, height: '100%'}}>
+          <View  style={{flex: 1, backgroundColor: '#FF000000', justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+       
+         <TouchableOpacity  
+            onPress={() => setModalVisible(!modalVisible)} 
             style={{
-              height: 20,
-              width: '80%',
-              // backgroundColor: '#00EE3C',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >              
-           <TouchableOpacity
-              style={{
-                backgroundColor: '#000',
-                borderRadius: 1 ,
-                height: 1,
-                width: 40,
-                marginTop: 10,
-                marginBottom: 10,
-              }}
-            ><Text>   </Text></TouchableOpacity>
-           </TouchableOpacity>
-            <View style={{ width:'90%'}}>
-              
-            <TouchableOpacity style={styles.button}>
-                   <Text>{min}</Text>
-                </TouchableOpacity>
-              <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                <Text style={{fontSize: 32, fontWeight: 'bold' }}>{name}</Text>
-              </View>
-              <View style={{ flexDirection:'row',  }}>
-                <TouchableOpacity style={styles.button}>
-                   <MaterialCommunityIcons name="human-male" size={14} color="black" />
-                   <Text> до {human} чел </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                   <Text> до {min} мин </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                <Text style={{fontSize: 20, }}>{detailed}</Text>
-              </View>
-              <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
-                <Text style={styles.title}>{title}</Text>
-              </View> 
+              flex:1, 
+              width: '100%',
+              height: deviceHeightHalf, 
+              backgroundColor: '#FF000000',
+            }}><Text></Text></TouchableOpacity>
+            <View style={styles.modalView}>
+              <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}
+                style={{
+                  height: 20,
+                  width: '80%',
+                  // backgroundColor: '#00EE3C',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >              
+               <TouchableOpacity
+                  style={{
+                    backgroundColor: '#000',
+                    borderRadius: 1 ,
+                    height: 1,
+                    width: 40,
+                    marginTop: 10,
+                    marginBottom: 10,
+                  }}
+                ><Text>   </Text></TouchableOpacity>
+               </TouchableOpacity>
+                <View style={{  width:'90%'}}>
+  
+                  <View style={{ alignItems: "flex-start", justifyContent: 'space-between', flexDirection: 'row', /*backgroundColor: '#FF000030'*/}}>
+                   <TouchableOpacity style={{
+                    backgroundColor: 'green', 
+                    borderRadius: 15, 
+                    paddingHorizontal:  4, 
+                    paddingVertical:  6, 
+                   }}>
+                    <Text style={{color: '#fff'}}> {kategore} </Text>
+
+                  </TouchableOpacity>
+                   {BottomLike}
+
+                  </View>
+                  <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+                    <Text style={{fontSize: 32, fontWeight: 'bold' }}>{name}</Text>
+                  </View>
+                  <View style={{ flexDirection:'row',  }}>
+                    <TouchableOpacity style={styles.button}>
+                       <MaterialCommunityIcons name="human-male" size={14} color="black" />
+                       <Text> до {human} чел </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}>
+                       <Text> до {min} мин </Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' , marginBottom: 100}}>
+                    <Text style={{fontSize: 20, }}>{detailed}</Text>
+                  </View>
+                  {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
+                    <Text style={styles.title}>{title}</Text>
+                  </View>  */}
+                </View>
+              {/* <View style={{width:'90%'}}>
+                  <BlockOk path="lololol" />
+              </View> */}
             </View>
-          {/* <View style={{width:'90%'}}>
-              <BlockOk path="lololol" />
-          </View> */}
-        </View>
-    </Modal>
+
+            </View>
+          </ScrollView>
+        </Modal>
     </View>
   </View>
   
@@ -336,13 +412,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#DCDCDC',
     // backgroundColor: 'green',
     width: '90%',
-    flexDirection:'row',
+    // flexDirection:'row',
     // height: 94,
     marginTop:20,
     marginBottom:20,
-    borderRadius: 20,
+    borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
+    
+    paddingVertical: 20,
+    // paddingHorizontal:  10,
   },
   centeredView: {
     // backgroundColor: "#EE00EE",

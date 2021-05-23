@@ -19,6 +19,12 @@ export const searchChanged = (
 export const id_massplus = ( 
     likeked: any,
     names: any,
+    detailed: any,
+    number: any,  
+    human: any,
+    kategore: any,
+    min: any,
+    mindo?: any,
     ) => {
         // const likekedhg = {id: likeked, name: names}
     console.log('массив плюс???:', likeked, names )
@@ -28,6 +34,12 @@ export const id_massplus = (
         // likelike: likekedhg,
         likekede: likeked,
         namese: names,
+        detailed: detailed,
+        number: number,  
+        human: human,
+        kategore: kategore,
+        min: min,
+        mindo: mindo,
     }
 }
 
@@ -57,7 +69,7 @@ export const bruhRedux = (
 export const arrayLikePlus = (
     id: any,
      name: any,
-    podrobn: any,
+     detailed: any,
     number: any,
     human: any,
     kategore: any,
@@ -70,7 +82,7 @@ export const arrayLikePlus = (
         type: ARRAYLIKEPLUSE,
         id: id,
         name: name,
-        podrobn: podrobn,
+        detailed: detailed,
         number: number,
         human: human,
         kategore: kategore,
