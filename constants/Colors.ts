@@ -20,3 +20,11 @@ export default {
 
 
 //        полезные ссылки:   https://html5css.ru/colors/colors_rgb.php
+//      '#F9F6F4' серый
+//     '#61CA85' зеленый
+//      
+//      
+//      
+//      
+//      
+//          

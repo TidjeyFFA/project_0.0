@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import React, {useState, useEffect, } from 'react';
 import { StyleSheet, Dimensions, Modal, FlatList, Text,  BackHandler,  TouchableOpacity, View, Image, ScrollView, Alert, StatusBar,} from 'react-native';
 
+import { Foundation, MaterialIcons, FontAwesome5} from '@expo/vector-icons';
 import { DATA } from '../hooks/DATA';
 import FilterBlokOk from '../components/FilterBlokOk'
 import { RootStackParamList } from '../types';
@@ -13,12 +14,17 @@ import { getStateFromPath } from '@react-navigation/core';
 import { RootState } from '../hooks/reducers';
 import { ButtHuman, ButtTime, ButtKategor } from '../store/index';
 import { id_massplus, arrayLikePlus, arrayLikeMinus } from '../hooks/actions';
-
 import { MaterialCommunityIcons, Entypo,  AntDesign } from '@expo/vector-icons'
+import TabBarIcon from '../navigation/BottomTabNavigator'
+import TabBarIcon2 from '../navigation/BottomTabNavigator'
+import TabBarIcon3 from '../navigation/BottomTabNavigator'
 
 let deviceWidth = Dimensions.get('window').width
 let deviceHeight = Dimensions.get('window').height
+
 let deviceHeightHalf = deviceHeight/2
+
+let heightBottom = deviceHeight/11
 
 export function Itemm({ 
   id, 
@@ -192,7 +198,7 @@ export function Itemm({
 
                 <View style={{ alignItems: "flex-start", justifyContent: 'space-between', flexDirection: 'row', /*backgroundColor: '#FF000030'*/}}>
                  <TouchableOpacity style={{
-                  backgroundColor: 'green', 
+                  backgroundColor: '#61CA85', 
                   borderRadius: 15, 
                   paddingHorizontal:  4, 
                   paddingVertical:  6, 
@@ -237,9 +243,9 @@ export function Itemm({
 }
 
 
-
+let colorBattom = '#858585'
 export function FFF(props: number) {
-  const [borro, setBorro] = useState(0);
+  const [borro, setBorro] = useState(0); 
 
 }
 
@@ -335,6 +341,86 @@ function FilterScreen(
         )}
         keyExtractor={item => item.id}
       />
+      <View style={{
+        flexDirection:'row', 
+        height: heightBottom, 
+        justifyContent: 'space-around', 
+        backgroundColor: '#FF000000',
+        // borderTopWidth: 1,
+        shadowColor: "00000",
+        shadowOpacity: 0.9,
+        shadowRadius: 4,
+        shadowOffset: {
+          height: 2,
+          width: 2
+        }
+        // shadowOffset: {
+        //   width: 4,
+        //   height: 80
+        // },
+        // shadowOpacity: 0.5,
+        // shadowRadius: 0,
+        // elevation: 6,
+        }}>
+    <TouchableOpacity 
+     onPress={()=>{
+       navigation.navigate('игры')
+       } }
+     style={{
+               backgroundColor: '#fff',
+               // width: 287,
+               width: '30%',
+               alignItems: 'center',
+               justifyContent: 'center',
+               paddingVertical: 8,
+              //  paddingHorizontal:  20,
+    shadowColor: "00000",
+    shadowOpacity: 0.9,
+    shadowRadius: 4,
+    shadowOffset: {
+      height: 2,
+      width: 2
+    }
+               }}>
+                 <Foundation size={24} style={{ marginBottom: 0 }} name='list-bullet' color={colorBattom} />
+                 <Text style={{fontSize: 17, color: colorBattom}}>игры</Text>
+             </TouchableOpacity>
+    <TouchableOpacity 
+     onPress={()=>{
+       navigation.navigate('любимые')
+       } }
+     style={{
+      backgroundColor: '#fff',
+      // width: 287,
+               width: '30%',
+               //  width: '90%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 8,
+      // paddingHorizontal:  20,
+               }}>
+                 <MaterialIcons size={24} style={{ marginBottom: 0 }} name='favorite' color={colorBattom} />
+                 <Text style={{fontSize: 17, color: colorBattom}}>любимые</Text>
+             </TouchableOpacity>
+    <TouchableOpacity 
+     onPress={()=>{
+       navigation.navigate('игротехника')
+       } }
+     style={{
+      backgroundColor: '#fff',
+      // width: 287,
+               width: '30%',
+               //  width: '90%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 8,
+      // paddingHorizontal:  20,
+               }}>
+                 <FontAwesome5 size={20} style={{ marginBottom: 0 }} name='dice' color={colorBattom} />
+                 <Text style={{fontSize: 17, color: colorBattom}}>игротехника</Text>
+             </TouchableOpacity>
+             
+          </View>
       </View>
   );
 }
@@ -566,7 +652,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:  10,
   },
   item3: {
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#F9F6F4',
     // backgroundColor: 'green',
     width: '90%',
     // flexDirection:'row',

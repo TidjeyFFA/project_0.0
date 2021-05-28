@@ -113,9 +113,9 @@ const ButtKategorForOnescreen1 = ({ navigation, kateteButt, iimages, searchChang
   return(
     <TouchableOpacity
       style={{
-        backgroundColor: '#DCDCDC',
+        backgroundColor: '#F9F6F4',
         // backgroundColor: 'green',
-        width: '90%',
+        width: '85%',
         // flexDirection:'row',
         // height: 94,
         marginTop:20,
@@ -168,7 +168,7 @@ export const ButtKategorForOnescreen = connect(mapStateToProps, dispatchStateToP
 const styles = StyleSheet.create({
     
   knok:{
-    backgroundColor: '#DCDCDC', 
+    backgroundColor: '#F9F6F4', 
     marginTop: 5,
     marginBottom: 5,
     marginRight: 8,

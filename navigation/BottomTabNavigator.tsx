@@ -1,10 +1,9 @@
-import { FontAwesome5 } from '@expo/vector-icons';
-import { Foundation } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Foundation, MaterialIcons, FontAwesome5} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { Image} from 'react-native';
+import FilterScreen from '../screens/FilterScreen';
+import { Image, Dimensions} from 'react-native';
 
 
 import Colors from '../constants/Colors';
@@ -14,7 +13,9 @@ import {TabTwoScreen} from '../screens/TabTwoScreen';
 import TabTryScreen from '../screens/TabTryScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabTryParamList } from '../types';
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+export const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+let deviceHeight = Dimensions.get('window').height
+let heightBottom = deviceHeight/11
 
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
@@ -23,20 +24,31 @@ export default function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="игры"
       
-  //   tabBarOptions= {
-  //     activeTintColor: '#0a0a0a',
-  //     labelStyle: {
-  //         fontSize: ScreenUtil.scale(14),
-  //     },
-  //     style: {
-  //         backgroundColor: '#f7f7f7',
-  //         //----------add this line------------------------//
-  //         height: 70;
-  //         borderTopWidth: 1,
-  //         borderTopColor: 'red'
-  //     },
-  // }
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint, inactiveTintColor: '#000' }}>
+    tabBarOptions={{
+      activeTintColor: Colors[colorScheme].tint,
+      // labelStyle: {
+      //     fontSize: ScreenUtil.scale(14),
+      // },
+      style: {
+          backgroundColor: '#fff',
+          //----------add this line------------------------//
+          height: heightBottom,
+          alignItems: 'center',
+          justifyContent: 'center',
+          
+
+      },
+      labelStyle: {
+        // backgroundColor: '#FF000030',
+        fontSize: 17,
+        marginBottom: 10,
+      },
+      iconStyle: {
+        marginTop: 10,
+        marginBottom: 10,
+      }
+  }}>
+       {/* tabBarOptions={{ activeTintColor: Colors[colorScheme].tint, inactiveTintColor: '#000' }}> */}
       <BottomTab.Screen
         name="игры"
         component={TabOneNavigator}
@@ -68,7 +80,7 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Foundation>['name
   return <Foundation size={24} style={{ marginBottom: 0 }} {...props} />;
 }
 function TabBarIcon2(props: { name: React.ComponentProps<typeof MaterialIcons>['name']; color: string }) {
-  return <MaterialIcons size={24} style={{ marginBottom: 0 }} {...props} />;
+  return <MaterialIcons size={24} style={{ marginBottom: 0,  }} {...props} />;
 }
 function TabBarIcon3(
   props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
@@ -104,6 +116,7 @@ function TabTwoNavigator() {
     </TabTwoStack.Navigator>
   );
 }
+{/* <Stack.Screen name="FilterSk" component={FilterScreen}/> */}
 
 const TabTryStack = createStackNavigator<TabTryParamList>();
 

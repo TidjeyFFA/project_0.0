@@ -18,6 +18,7 @@ export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
 
+
 export type TabTryParamList = {
   TabTryScreen: undefined;
 };

@@ -245,7 +245,7 @@ export function Itemm({
           
           <Text numberOfLines={5} style={{  fontSize: 15,  color: '#000000',  }}>{detailed}</Text>
         </View>
-        <TouchableOpacity onPress={ ()=> setBigDetailed(false)}>
+        <TouchableOpacity onPress={ ()=> setBigDetailed(false)} style={{backgroundColor: '#FF000000', width: 80, height: 30, justifyContent: 'center'}}>
           <Text style={{color: 'blue'}}>
             далее...
           </Text>
@@ -257,9 +257,9 @@ export function Itemm({
         
         <Text style={{  fontSize: 15,  color: '#000000',  }}>{detailed}</Text>
       </View>
-      <TouchableOpacity onPress={ ()=> setBigDetailed(true)}>
+      <TouchableOpacity onPress={ ()=> setBigDetailed(true)} style={{backgroundColor: '#FF000000', width: 80, height: 30, justifyContent: 'center'}}>
         <Text style={{color: 'blue'}}>
-          далее...
+          скрыть...
         </Text>
       </TouchableOpacity>
       </>
@@ -292,7 +292,7 @@ export function Itemm({
       >
         <View style={{ width: '90%', flexDirection:'row', justifyContent: 'space-between' ,  backgroundColor: '#EE16D300' }}>
           <TouchableOpacity style={{
-            backgroundColor: 'green', 
+            backgroundColor: '#61CA85', 
             borderRadius: 15, 
             paddingHorizontal:  4, 
             paddingVertical:  6, 
@@ -568,7 +568,7 @@ return (
   
                   <View style={{ alignItems: "flex-start", justifyContent: 'space-between', flexDirection: 'row', /*backgroundColor: '#FF000030'*/}}>
                    <TouchableOpacity style={{
-                    backgroundColor: 'green', 
+                    backgroundColor: '#61CA85', 
                     borderRadius: 15, 
                     paddingHorizontal:  4, 
                     paddingVertical:  6, 
@@ -937,7 +937,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   item: {
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#F9F6F4',
     // backgroundColor: 'green',
     width: '90%',
     flexDirection:'row',
@@ -950,7 +950,7 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   item2: {
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#F9F6F4',
     // backgroundColor: 'green',
     width: 360,
     flexDirection:'row',
@@ -961,7 +961,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   item3: {
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#F9F6F4',
     // backgroundColor: 'green',
     width: '90%',
     // flexDirection:'row',

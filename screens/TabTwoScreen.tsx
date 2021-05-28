@@ -246,7 +246,7 @@ return (
   >
     <View style={{ width: '90%', flexDirection:'row', justifyContent: 'space-between' ,  backgroundColor: '#EE16D300' }}>
       <TouchableOpacity style={{
-        backgroundColor: 'green', 
+        backgroundColor: '#61CA85', 
         borderRadius: 15, 
         paddingHorizontal:  4, 
         paddingVertical:  6, 
@@ -322,7 +322,7 @@ return (
   
                   <View style={{ alignItems: "flex-start", justifyContent: 'space-between', flexDirection: 'row', /*backgroundColor: '#FF000030'*/}}>
                    <TouchableOpacity style={{
-                    backgroundColor: 'green', 
+                    backgroundColor: '#61CA85', 
                     borderRadius: 15, 
                     paddingHorizontal:  4, 
                     paddingVertical:  6, 
@@ -409,7 +409,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:  10,
   },
   item: {
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#F9F6F4',
     // backgroundColor: 'green',
     width: '90%',
     // flexDirection:'row',
