@@ -307,7 +307,7 @@ function FilterScreen(
           && 
           DATA.min > movieT 
           && 
-          DATA.kategore == movogore  || movogore == ''
+         ( DATA.kategore == movogore  || movogore == '')
           )  }     
         ListHeaderComponent={
           // DATA.some(function(e: any){return e.kategore == movogore }) 
@@ -320,6 +320,7 @@ function FilterScreen(
             <ButtKategor kateteButt={movogore} popolo={1}/>
             <ButtKategor kateteButt={'Универсальные'} popolo={2} />
           </View>
+          {/* <Text>{movie}</Text> */}
           </View> 
         }          
         renderItem={({ item }) => (
@@ -378,7 +379,7 @@ function FilterScreen(
     shadowOpacity: 0.9,
     shadowRadius: 4,
     shadowOffset: {
-      height: 2,
+      height: 2, 
       width: 2
     }
                }}>

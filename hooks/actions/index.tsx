@@ -76,7 +76,7 @@ export const arrayLikePlus = (
     min: any,
     mindo: any,
 ) => {
-    console.log('array massiv nah', id, name, human, )
+    // console.log('array massiv nah', id, name, human, )
 
     return {
         type: ARRAYLIKEPLUSE,
@@ -94,7 +94,7 @@ export const arrayLikePlus = (
 export const arrayLikeMinus = (
     id: any,
 ) => {
-    console.log('array massiv minus', id )
+    // console.log('array massiv minus', id )
 
     return {
         type: ARRAYLIKEMINUS,
