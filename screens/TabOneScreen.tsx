@@ -1,13 +1,16 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React, {useState} from 'react';
-import { StyleSheet, Image, Modal, TouchableOpacity, SafeAreaView, Dimensions} from 'react-native';
+import { StyleSheet, Image, Modal, TouchableOpacity, SafeAreaView, Dimensions, RefreshControl} from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { MaterialCommunityIcons, Entypo,  AntDesign } from '@expo/vector-icons'
 
 import { Text, View } from '../components/Themed';
 import { RootStackParamList } from '../types';
-import { DATA } from '../hooks/DATA'
-import { id_massplus, arrayLikePlus, arrayLikeMinus } from '../hooks/actions';
+import { 
+  DATA, 
+  // DATAexcel 
+} from '../hooks/DATA'
+import { id_massplus, arrayLikePlus, arrayLikeMinus,  } from '../hooks/actions';
 import { RootState } from '../hooks/reducers';
 import { connect, } from 'react-redux'
 import { useLinkProps } from '@react-navigation/native';
@@ -333,7 +336,7 @@ export function Itemm({
             setModalVisible(!modalVisible);
           }}
         >
-         <ScrollView style={{flex: 1, height: '100%'}}>
+         <ScrollView style={{flex: 1, height: '100%'}} >
           <View  style={{flex: 1, backgroundColor: '#FF000000', justifyContent: 'flex-end', alignItems: 'flex-end'}}>
        
          <TouchableOpacity  
@@ -342,8 +345,10 @@ export function Itemm({
               flex:1, 
               width: '100%',
               height: deviceHeightHalf, 
-              backgroundColor: '#FF000000',
-            }}><Text></Text></TouchableOpacity>
+              backgroundColor: '#00000030',
+            }}><Text></Text>
+</TouchableOpacity>
+<View style={{backgroundColor:'#00000030', width: '100%'}}>
             <View style={styles.modalView}>
               <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}
                 style={{
@@ -402,8 +407,9 @@ export function Itemm({
               {/* <View style={{width:'90%'}}>
                   <BlockOk path="lololol" />
               </View> */}
-            </View>
 
+            </View>
+            </View>
             </View>
           </ScrollView>
         </Modal>
@@ -469,8 +475,12 @@ const [checkLike, setCheckLike] = useState(arrayLike.some(function(e: any){retur
       {/* <MaterialCommunityIcons name="human-male" size={14} color="black" /> */}
     </TouchableOpacity>
       
-  
+      
   const [modalVisible, setModalVisible] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = () => {
+    setModalVisible(false)
+  }
 return (
   <View style={styles.centeredView}>
     <View style={{alignItems:'center', width:'96%'}}>
@@ -532,7 +542,10 @@ return (
             setModalVisible(!modalVisible);
           }}
         >
-         <ScrollView style={{flex: 1, height: '100%'}}>
+         <ScrollView style={{flex: 1, height: '100%'}} refreshControl={<RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />} >
           <View  style={{flex: 1, backgroundColor: '#FF000000', justifyContent: 'flex-end', alignItems: 'flex-end'}}>
        
          <TouchableOpacity  
@@ -541,8 +554,9 @@ return (
               flex:1, 
               width: '100%',
               height: deviceHeightHalf, 
-              backgroundColor: '#FF000000',
-            }}><Text></Text></TouchableOpacity>
+              backgroundColor: '#00000030',
+            }}><Text></Text>
+</TouchableOpacity>
             <View style={styles.modalView}>
               <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}
                 style={{
@@ -602,7 +616,6 @@ return (
                   <BlockOk path="lololol" />
               </View> */}
             </View>
-
             </View>
           </ScrollView>
         </Modal>
@@ -625,7 +638,12 @@ function getRecentBlocks(blocks: Array<any>): Array<any> {
   return recentBlocks
 }
 
-
+function datareduxFun(dataredux: Array<any>): Array<any> {
+  const dataredux2 = []
+  
+  dataredux2.push(dataredux)
+  return dataredux2
+}
 
 // это для ,,популярные"
 function getOneBlockOK(blocks: Array<any>): Array<any> {
@@ -662,30 +680,30 @@ export function TabOneScreen1({
   navigation,
   likeked,
   mass,
+  dataredux,
   id_massplus,
   arrayLikePlus,
   arrayLikeMinus,
   arrayLike,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
   let DATATA
-  console.log('fghuedhgbefdbghef' , )
   // let massive = data.some(o => o.id === 2)
   const Massive = ({id}:any) => {
-    if (DATA.some(arr => arr.id === id)) {
+    if (datareduxFun(dataredux).some(arr => arr.id === id)) {
       return true;
     }
     return false;
   }
-  let DADADATA = DATA
+  let DADADATA = dataredux
   // const [ getAt, setGetAt] = useState([]);
   // setGetAt( likeked )
-  let Gagaga = DATA[0]
+  let Gagaga = dataredux[0]
   const [showOrHideSTATE, setShowOrHideSTATE] = useState(true);
 
   const showOrHide = (showOrHideSTATE) ? 
     <TouchableOpacity onPress={()=>setShowOrHideSTATE(false)} style={{ marginRight: 25, flexDirection:'row' , alignItems: 'flex-end', }}>
       <Text>
-        Все {DADADATA.length}
+        Все {dataredux.length}
       </Text>
     </TouchableOpacity> :
     <TouchableOpacity onPress={()=>setShowOrHideSTATE(true)} style={{ marginRight: 25, flexDirection:'row' , alignItems: 'flex-end', }}>
@@ -693,15 +711,16 @@ export function TabOneScreen1({
         Скрыть
       </Text>
     </TouchableOpacity>
-  const kategoreBlock = {
-
-  }
+    let DaTa: any = []
+    // setTimeout(()=> { 
+    //   DaTa = DATAexcel
+    // }, 5) 
   return (
     //      {likeked.slice( 0, 2 )}     getRecentBlocks(likeked).some(function(e: any){return e.id == DATA.id })
     //       DATA.filter(DATA => getRecentBlocks(likeked).some(function(e: any){return e.id == DATA.id }) )
     // DATA.filter(DATA => getRecentBlocks(likeked).some(function(e: any){return e.id == DATA.id }) )
     <View style={styles.container}>
-
+ 
       <FlatList
         data={getRecentBlocks(likeked)}
         // style={{alignItems:'center'}}   likeked  scrollEnabled= {false}  , backgroundColor: '#FF000030'
@@ -760,7 +779,7 @@ export function TabOneScreen1({
               {showOrHide}
             </View> 
        <FlatList
-        data={(showOrHideSTATE)?getOneBlockOK(DATA):getOneBlockNO(DATA)}
+        data={(showOrHideSTATE)?getOneBlockOK(dataredux):getOneBlockNO(dataredux)}
         // style={{alignItems:'center'}}     scrollEnabled= {false}  , backgroundColor: '#FF000030'
         ListFooterComponent={
           <View style={{alignItems: 'center'}}>
@@ -831,6 +850,7 @@ const mapStateToProps = (state: RootState) => {
     // brah: state.search.brah
     likeked: state.likeds.mass,
     arrayLike: state.likeds.arrayLike,
+    dataredux: state.dataRedux.dataredux,
 
   }
 }
@@ -987,7 +1007,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "#EC3B00",
     borderTopStartRadius : 20,
     borderTopEndRadius : 20,
-    // marginTop: 6,
+    // marginTop: deviceHeightHalf,
     width: '100%',
     minHeight : deviceHeightHalf,
     alignItems: "center",

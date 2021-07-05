@@ -9,6 +9,9 @@ import FilterSk from '../screens/FilterScreen'
 import FFF from '../screens/FilterScreen'
 import { Octicons } from '@expo/vector-icons'; 
 import { ButtHuman, ButtTime, ButtKategor } from '../store/index';
+import { connect, } from 'react-redux';
+import { DATA } from '../hooks/DATA';
+import { RootState } from '../hooks/reducers';
   
 
 
@@ -43,7 +46,20 @@ function Ragds({stylle, navigation}:{stylle: any, navigation: any}) {
   };
   //  navigation navigation   , 'NotFound'>
 
-export default function BlockFk({icone, navigation }: any ){
+export function BlockFk({icone, navigation, movie, movieT, movogore, }: any ){
+
+      let data = DATA.filter(DATA => 
+      DATA.human > movie 
+      && 
+      DATA.min > movieT 
+      && 
+      (DATA.kategore == movogore  || movogore == '')
+      ) 
+    const [namberlength, setNamberlength] = useState(0);
+  const LineFilter = () => {
+     
+    setNamberlength( data.length )
+  }
   const [modalVisible, setModalVisible] = useState(false);
   // const navigation = useNavigation
   const textOOP = 
@@ -193,7 +209,7 @@ export default function BlockFk({icone, navigation }: any ){
                paddingVertical: 8,
                paddingHorizontal:  20,
                }}>
-                 <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
+                 <Text style={{fontSize: 17, color: '#fff'}}>Показатьт {data.length} игры</Text>
              </TouchableOpacity>
     :  
        <TouchableOpacity 
@@ -209,7 +225,8 @@ export default function BlockFk({icone, navigation }: any ){
                   paddingVertical: 8,
                   paddingHorizontal:  20,
                   }}>
-                    <Text style={{fontSize: 17, color: '#fff'}}>Иду искать!</Text>
+                    <Text style={{fontSize: 17, color: '#fff'}}>Показатьт {data.length} игры</Text>
+                    {LineFilter}
                 </TouchableOpacity>
 
     }
@@ -223,7 +240,14 @@ export default function BlockFk({icone, navigation }: any ){
 </View>
 )};
 
-
+const mapStateToProps = (state: RootState) => {
+  return  { 
+    // movie: store.getState 
+    movie: state.search.movie,
+    movieT: state.search.movieT,
+    movogore: state.search.movogore,
+  }}
+  export default connect(mapStateToProps)(BlockFk);
 // function BattonNavigate({navigation}: any)  {
 // }
 

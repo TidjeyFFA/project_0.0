@@ -6,7 +6,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { connect, } from 'react-redux'
 import { RootState } from '../hooks/reducers';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { DATA } from '../hooks/DATA';
+// import { DATA } from '../hooks/DATA';
 import { searchChanged, bruhRedux } from '../hooks/actions';
 import { id_massplus, arrayLikePlus, arrayLikeMinus  } from '../hooks/actions';
 import { AntDesign } from '@expo/vector-icons'; 
@@ -257,14 +257,14 @@ return (
     </View>
     <View style={{width:'88%', backgroundColor: '#FF000000'}}>
       
-      <Text style={{fontSize: 20, fontWeight:'bold', marginTop: 5 }}>{name}</Text>
+      <Text style={{fontSize: 20, fontWeight:'bold', marginTop: 5, color: '#000' }}>{name}</Text>
       <View style={{ flexDirection:'row', backgroundColor:'#FF000000' }}>
           <TouchableOpacity style={styles.buttonFil2}>
               <MaterialCommunityIcons name="human-male" size={14} color="black" />
-              <Text style={{fontSize:15,}}> до {human} чел </Text>
+              <Text style={{fontSize:15,color: '#000'}}> до {human} чел </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonFil2}>
-              <Text> до {min} мин </Text>
+              <Text style={{color: '#000'}}> до {min} мин </Text>
           </TouchableOpacity>
       </View>
     {/* <View style={{ flexDirection:'row',  backgroundColor: 'rgba(52, 52, 52, 0.0)' }}>
