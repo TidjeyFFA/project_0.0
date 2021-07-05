@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux'
 import SearchReducer from './SearchReducer'
 import LikedReduser from './LikedReduser'
-// import {searchChanged} from '../actions/index'
+import DataRedux from './DATAREDUX'
+
 
 const AppReducer = combineReducers({
     search: SearchReducer,
-    
-    likeds: LikedReduser
+    likeds: LikedReduser,
+    dataRedux: DataRedux
 })
 export type RootState = ReturnType<typeof AppReducer>;
 export default AppReducer

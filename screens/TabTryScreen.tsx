@@ -6,7 +6,8 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import BlockFk from '../hooks/BlockOk';
 // import DATA from '../hooks/DATA';
 import { RootStackParamList } from '../types';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { DATAexcel } from '../hooks/DATA'
 import { 
   StyleSheet, 
   Modal, 
@@ -54,12 +55,39 @@ import { StatusBar } from 'react-native'
 // export  AsyncStorageExample
 
 
-
+// let experement = 0
 // const result = DATA.filter(DATA => DATA.number > 11);    default
 
 export default function TabTryScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
+
+// let FUCK = 0
+// const getData = async () => {
+//   try {
+//     const jsonValue = await AsyncStorage.getItem('@storage_Key1')
+//     jsonValue != null ? FUCK = JSON.parse(jsonValue) : 0;
+//   } catch(e) {
+//     // error reading value
+//   }
+// }
+
+const [experement, setExperement] = useState(0);
+
+// setExperement(FUCK)
+const storeData = async (  ) => {
+  try {
+      const jsonarrayLike = JSON.stringify(  experement  )
+      await AsyncStorage.setItem('storage_Key1', jsonarrayLike)
+    console.log('array seved ')
+  } catch (e) {
+    console.log('error saving array')
+    // saving error
+  }
+  console.log('Done')
+
+}
+
   return (
     <ScrollView>
     <View style={styles.container}>
@@ -119,6 +147,12 @@ export default function TabTryScreen({
           <Text style={{fontSize:17, marginTop: 5  }}>Составление своих игр</Text>
         </View>
       </View>
+      <TouchableOpacity onPress={()=>{
+        setExperement(experement+1)
+        storeData
+        // DATAexcel
+        }  }
+        style={{backgroundColor: '#FF000030', height:50, width: 50}}><Text>{experement}</Text></TouchableOpacity>
       <BlockFk icone={1} navigation= {navigation } />
       {/* <BlockFk styllee='0'/> */}
     </View>

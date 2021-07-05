@@ -9,7 +9,6 @@ export default function NotFoundScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
   
-  
   return (
     <View style={styles.container}>
       <View style={{
@@ -54,7 +53,7 @@ export default function NotFoundScreen({
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{
+        <View style={{ 
           justifyContent: 'center',
           width: '100%',
           marginTop: 50,

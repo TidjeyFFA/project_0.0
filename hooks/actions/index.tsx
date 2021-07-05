@@ -1,12 +1,10 @@
-import { ID_MASSPUS, ID_MASSMIN, SEARCH_CHANGED, BRUH, ARRAYLIKEPLUSE, ARRAYLIKEMINUS } from '../../types'
+import { ID_MASSPUS, ID_MASSMIN, SEARCH_CHANGED, BRUH, ARRAYLIKEPLUSE, ARRAYLIKEMINUS, REDUXDATA } from '../../types'
 
 export const searchChanged = (
     numberHuman: number, 
     numberTime: number, 
     kategory: string,
-    // likeked: any,
     ) => {
-    // console.log('number human:', numberHuman)
     return {
         type: SEARCH_CHANGED,
         payload: numberHuman,
@@ -76,8 +74,6 @@ export const arrayLikePlus = (
     min: any,
     mindo: any,
 ) => {
-    // console.log('array massiv nah', id, name, human, )
-
     return {
         type: ARRAYLIKEPLUSE,
         id: id,
@@ -90,12 +86,9 @@ export const arrayLikePlus = (
         mindo: mindo,
     }
 }
-
 export const arrayLikeMinus = (
     id: any,
 ) => {
-    // console.log('array massiv minus', id )
-
     return {
         type: ARRAYLIKEMINUS,
         id: id,
@@ -104,6 +97,15 @@ export const arrayLikeMinus = (
 }
 
 
+export const dataRedux = ( 
+    data: any
+    ) => {
+    console.log('brrr', data )
+    return {
+        type: REDUXDATA,
+        data: data
+    }
+}
 // {
 //     id: '58srsthyfjh0f-3da1-471f-bd96-145wbregbr2',
 //     name: '2462452ik',

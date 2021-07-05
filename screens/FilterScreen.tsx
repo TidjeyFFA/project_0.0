@@ -249,9 +249,10 @@ export function FFF(props: number) {
 
 }
 
+
   const fdf = '0';
 function FilterScreen( 
-  { navigation, arrayLike, searchChanged, movie, movieT, movogore, brah , 
+  { navigation, arrayLike, searchChanged, movie, movieT, movogore, brah , dataredux, 
     id_massplus,
     arrayLikePlus,
     arrayLikeMinus, }
@@ -296,9 +297,15 @@ function FilterScreen(
     const [nolik, setNolik] = useState(0);
 
     const [odelete, setOdelete] = useState(0);
+//     const [dataredux2, setdataredux2] = useState([]);
 
+// const datareduxFun = (dataredux: Array<any>): Array<any> => {
+//   setdataredux2(dataredux)
+  
+//   return dataredux2
+// }
+// const DATA: any = [{human: 50, min: 50, kategore: 'знакомства'}]
   let movieTTT = () => {if(movie>1) {return(movie)} else {return(0)} }
-
   return (
       <View style={{backgroundColor: '#fff', flex: 1, /* marginTop: 50, */ }}>
           <FlatList
@@ -436,6 +443,7 @@ const mapStateToProps = (state: RootState) => {
     brah: state.search.brah,
     likeked: state.likeds.mass,
     arrayLike: state.likeds.arrayLike,
+    dataredux: state.dataRedux.dataredux,
   }
 }
 const dispatchStateToProps = (dispatch: any) => {

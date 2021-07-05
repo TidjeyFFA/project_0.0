@@ -6,7 +6,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { connect, } from 'react-redux'
 import { RootState } from '../hooks/reducers';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { DATA } from '../hooks/DATA';
+// import { DATA } from '../hooks/DATA';
 import { searchChanged, bruhRedux } from '../hooks/actions';
 import { id_massplus, arrayLikePlus, arrayLikeMinus  } from '../hooks/actions';
 import { AntDesign } from '@expo/vector-icons'; 

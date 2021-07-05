@@ -2,18 +2,19 @@ import { ID_MASSPUS, ARRAYLIKEPLUSE, ARRAYLIKEMINUS } from '../../types'
 import { id_massplus, id_massmin, searchChanged, bruhRedux, arrayLikePlus  } from '../actions'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import {action} from '../actions'
-
+let arrayA = []
   const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('@storage_Key')
-      return jsonValue != null ? JSON.parse(jsonValue) : [];
+      return jsonValue != null ? arrayA = JSON.parse(jsonValue) : [];
     } catch(e) {
       // error reading value
     }
 }
+getData
 const INITIAL = {
     mass: [{id: '000', name: '222'}, ],
-    arrayLike: [{getData}]
+    arrayLike: []
         // {
         // id: 'id', 
         // name: 'name',
@@ -29,7 +30,8 @@ const INITIAL = {
 
 const storeData = async ( state = INITIAL ) => {
     try {
-      const jsonarrayLike = JSON.stringify(  ...state.arrayLike  )
+        let arrayLikem = {...state.arrayLike}
+      const jsonarrayLike = JSON.stringify(  arrayLikem  )
       await AsyncStorage.setItem('storage_Key', jsonarrayLike)
       console.log('array seved ')
     } catch (e) {
@@ -96,6 +98,7 @@ export default (state = INITIAL, action: any) => {
             return{
                 ...state,
                 arrayLike: state.arrayLike.filter(arrayLike => arrayLike.id != action.id ),
+                storeData
             };
         default: return state
     }
