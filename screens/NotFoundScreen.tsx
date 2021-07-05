@@ -1,13 +1,65 @@
 import { StackScreenProps } from '@react-navigation/stack';
+import axios from 'axios';
 import * as React from 'react';
+import { useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView, Alert, StatusBar,} from 'react-native';
+import { connect } from 'react-redux';
+import { dataRedux } from '../hooks/actions';
+import { RootState } from '../hooks/reducers';
 
 import { RootStackParamList } from '../types';
 
+const getGamesDataTableAsObject = async () => {
+  
+  // Initialize empty array
+  let data: any = [];
 
-export default function NotFoundScreen({
+  // Get a response from google docs
+  const response = await axios.get("https://docs.google.com/spreadsheets/d/1tdSmdFhnd_PIR3JP7uD5n65C5mV3roA534pX7KmYO5w/export?format=tsv&id=1tdSmdFhnd_PIR3JP7uD5n65C5mV3roA534pX7KmYO5w&gid=0")
+
+  // Get all the rows from table
+  const rows = response.data.split("\n")
+
+  // Get all the data titles from the second row
+  const titles = rows[1].split("\t")
+
+  // Parse all the rows starting from the 3rd
+  for (let i=2; i < rows.length; i++) {
+
+    // Current row
+    const row = rows[i]
+
+    // Get data from the row              /\s+/
+    const columns = row.split("\t")
+    // Stop when empty row detected
+    if (columns[1] != "") {
+
+      // Create empty object
+      let item = {}
+
+      // Fill object with data from the columns
+      // Use data titles from the second row as keys to the appropriate column
+      titles.forEach((label: string, index: number) => item = {...item, [label]: columns[index]})
+
+      // Add item to the array
+      data = [...data, item]
+    } else break
+  }
+
+  // Return array
+  return data
+}
+
+const NotFoundScreen = ({
   navigation,
-}: StackScreenProps<RootStackParamList, 'NotFound'>) {
+  dataRedux
+}: StackScreenProps<RootStackParamList, 'NotFound'>) => {
+
+  useEffect(()=> {
+    getGamesDataTableAsObject().then(data => {
+      dataRedux(data)
+    })
+  })
   
   return (
     <View style={styles.container}>
@@ -72,6 +124,28 @@ export default function NotFoundScreen({
     </View>
   );
 }
+
+const mapStateToProps = (state: RootState) => {
+  return  { 
+    // movie: store.getState 
+    // movie: state.search.movie,
+    // movieT: state.search.movieT,
+    // movogore: state.search.movogore,
+    // brah: state.search.brah
+    // likeked: state.likeds.mass,
+    // arrayLike: state.likeds.arrayLike,
+    // dataredux: state.dataRedux.dataredux,
+
+  }
+}
+
+const dispatchStateToProps = (dispatch: any) => {
+  return  { 
+    dataRedux: (data:any ) => dispatch( dataRedux( data) ),
+  }
+}
+
+export default connect( mapStateToProps, dispatchStateToProps )( NotFoundScreen );
 
 
 const styles = StyleSheet.create({
