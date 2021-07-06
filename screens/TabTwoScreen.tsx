@@ -30,7 +30,11 @@ function TabTwoScreen1({
 
  if(arrayLike.length == 0) {
     return (
+      <>
+      <Text style={{marginTop: 30, marginBottom: 10, marginLeft: 30, fontSize: 30, fontWeight: 'bold'}}>Любимые игры</Text>
+     
       <View style={styles.container}>
+        
         <>
         <View style={styles.centeredViewBEZ }>
         <Image style={{ height: 255, width: 153}}
@@ -39,14 +43,16 @@ function TabTwoScreen1({
         </View>
         <Text style={{fontSize: 20,}}>Добавь первую любимую игру</Text>
         </>
-      </View>
+      </View></>
       //   .filter(DATA ) => DATA.human > movie && DATA.min > movieT && DATA.kategore == movogore
     );} else { return (
       <View style={styles.container}>
       <FlatList
       data= {arrayLike} 
       style={{width: '100%', alignContent: 'center'}}    
-      // ListHeaderComponent={}          
+      ListHeaderComponent={
+        <Text style={{marginTop: 30, marginBottom: 10, marginLeft: 30, fontSize: 30, fontWeight: 'bold'}}>Любимые игры</Text>
+      }          
       renderItem={({ item }) => (
         <Itemm
         arrayLike={arrayLike}

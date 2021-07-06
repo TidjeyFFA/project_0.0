@@ -147,12 +147,6 @@ const storeData = async (  ) => {
           <Text style={{fontSize:17, marginTop: 5  }}>Составление своих игр</Text>
         </View>
       </View>
-      <TouchableOpacity onPress={()=>{
-        setExperement(experement+1)
-        storeData
-        // DATAexcel
-        }  }
-        style={{backgroundColor: '#FF000030', height:50, width: 50}}><Text>{experement}</Text></TouchableOpacity>
       <BlockFk icone={1} navigation= {navigation } />
       {/* <BlockFk styllee='0'/> */}
     </View>

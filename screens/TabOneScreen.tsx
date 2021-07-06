@@ -773,7 +773,7 @@ export function TabOneScreen1({
         </View>
         </View>}
         ListFooterComponent={
-          <View  >
+          <View  style={{marginBottom: 30}}>
             <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
               <Text style={{fontSize: 32, fontWeight: 'bold', marginLeft:45}}>Популярные</Text>
               {showOrHide}
